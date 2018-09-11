@@ -5,7 +5,7 @@
 Githubi wiki võimalusi kasutades dokumenteerige järgnev
 
 Milliseid tehnoloogiaid ja kodeerimiskeeli on rühm otsustanud kasutada
-Meeskonna ja rolli kirjeldus: Kuidas te näete et teie meeskonnas rollid jagunevad? Kes tegeleb millega meeskonnas? 
+Meeskonna ja rolli kirjeldus: Kuidas te näete et teie meeskonnas rollid jagunevad? <br>Kes tegeleb millega meeskonnas? 
 Kas keegi pühendub rohkem välimusele ja keegi teine loogikale? Või tehakse kõike võrdselt? Kes on projekti juht? 
 Või eksperimenteerite ilma juhita? Kuidas jaotate ülesandeid? Palju aega keegi saab panustada projekti? 
 Kas kellegil on alguse poole rohkem aega ja lõpu poole vähem? Kas tulete kokku laupäeviti, et arendada või teeb igaüks oma kodus?
