@@ -11,7 +11,7 @@ package TronGame.Tron.Controllers;
 
     @RequestMapping("/")
     public String index(Model model){
-        model.addAttribute("text", "Hello world from index function");
+        model.addAttribute("text", "Welcome to Tron Online");
         return "index";
     }
 
