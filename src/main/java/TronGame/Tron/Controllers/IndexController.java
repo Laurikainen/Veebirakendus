@@ -1,24 +1,33 @@
 package TronGame.Tron.Controllers;
 
-
-    import org.springframework.stereotype.Controller;
-    import org.springframework.ui.Model;
-    import org.springframework.web.bind.annotation.PathVariable;
-    import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
     public class IndexController {
 
     @RequestMapping("/")
-    public String index(Model model){
-        model.addAttribute("text", "Welcome to Tron Online");
-        return "index";
+    public String main_page(){
+        return "main_page";
     }
 
-    @RequestMapping("/book/{id}")
-    public String getBootById(Model model, @PathVariable("id") Long id){
-        model.addAttribute("bookId", id);
+    @RequestMapping("/user")
+    public String user(){
+        return "user";
+    }
+
+    @RequestMapping("/login")
+    public String login(){ return "login"; }
+
+    /*@RequestMapping("/forum")
+    public String forum(Model model){
         return "book";
     }
+
+    @RequestMapping("/user")
+    public String user(Model model){
+        return "book";
+    }*/
+
 
 }
