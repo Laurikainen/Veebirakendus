@@ -19,15 +19,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
     @RequestMapping("/login")
     public String login(){ return "login"; }
 
-    /*@RequestMapping("/forum")
-    public String forum(Model model){
-        return "book";
-    }
+    @RequestMapping("/forum")
+    public String forum(){ return "forum"; }
 
-    @RequestMapping("/user")
-    public String user(Model model){
-        return "book";
-    }*/
+    @RequestMapping("/play_game")
+    public String play_game(){ return "play_game"; }
+
+    @RequestMapping("/registration")
+    public String registration(){ return "registration"; }
+
+    @RequestMapping("/new_post")
+    public String new_post(){ return "new_post"; }
 
 
 }
