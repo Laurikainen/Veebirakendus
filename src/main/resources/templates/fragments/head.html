@@ -7,11 +7,11 @@
 </head>
 <body th:fragment="body">
     <ul>
-        <li><a href="">Game Info</a></li>
-        <li><a href="">Play Game</a></li>
-        <li><a href="">Forum</a></li>
-        <li><a href="">User</a></li>
-        <li style="float:right"><a href="">Log In</a></li>
+        <li><a th:href="@{/}">Game Info</a></li>
+        <li><a th:href="@{/play_game}">Play Game</a></li>
+        <li><a th:href="@{/forum}">Forum</a></li>
+        <li><a th:href="@{/user}">User</a></li>
+        <li style="float:right"><a th:href="@{/login}">Log In</a></li>
     </ul>
 </body>
 </html>
