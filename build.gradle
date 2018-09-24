@@ -19,6 +19,7 @@ apply plugin: 'io.spring.dependency-management'
 group = 'TronGame'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 bootJar {
 	baseName = 'gs-accessing-data-mysql'
@@ -29,15 +30,11 @@ repositories {
 	mavenCentral()
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('mysql:mysql-connector-java')
-	compile('org.hibernate:hibernate-core:4.1.4.Final')
-	compile('org.hibernate:hibernate-entitymanager:5.2.3.Final')
+	compile('javax.xml.bind:jaxb-api:2.3.0')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }

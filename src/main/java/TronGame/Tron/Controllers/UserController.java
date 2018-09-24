@@ -1,4 +1,4 @@
-package TronGame.Tron;
+package TronGame.Tron.Controllers;
 
 import TronGame.Tron.Repository;
 import TronGame.Tron.User;
@@ -16,7 +16,7 @@ import java.util.Date;
 @RequestMapping(path="/demo")
     public class UserController {
         @Autowired
-        private TronGame.Tron.Repository Repository;
+        private Repository Repository;
 
         @GetMapping(path="/add") // Map ONLY GET Requests
         public @ResponseBody String addNewUser(@RequestParam String username, @RequestParam String name,
