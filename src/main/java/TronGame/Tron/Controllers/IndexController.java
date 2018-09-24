@@ -31,5 +31,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
     @RequestMapping("/new_post")
     public String new_post(){ return "new_post"; }
 
+    @RequestMapping("/privacy_policy")
+    public String privacy_policy(){ return "privacy_policy"; }
+
 
 }
