@@ -1,4 +1,4 @@
-package Database;
+package TronGame.Tron;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,15 +10,20 @@ import java.util.Date;
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer id;
     private String username;
-
     private String name;
-
     private String email;
-
     private String password;
-
     private Date registration;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getUsername() {
         return username;
@@ -50,6 +55,10 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Date getRegistration() {
+        return registration;
     }
 
     public void setRegistration(Date registration) {
