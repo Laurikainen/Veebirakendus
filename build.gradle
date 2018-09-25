@@ -1,13 +1,13 @@
 buildscript {
-	ext {
-		springBootVersion = '2.0.5.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    ext {
+        springBootVersion = '2.0.5.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
@@ -22,19 +22,21 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 bootJar {
-	baseName = 'gs-accessing-data-mysql'
-	version =  '0.1.0'
+    baseName = 'gs-accessing-data-mysql'
+    version =  '0.1.0'
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('mysql:mysql-connector-java')
-	compile('javax.xml.bind:jaxb-api:2.3.0')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+    runtime('javax.xml.bind:jaxb-api')
+    //runtime('org.springframework.boot:spring-boot-devtools')
+    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('mysql:mysql-connector-java')
+    compile('javax.xml.bind:jaxb-api:2.3.0')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
 }

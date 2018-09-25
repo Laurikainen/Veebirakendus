@@ -1,28 +1,31 @@
-package TronGame.Tron;
+package TronGame.Tron.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name="user_data")
 public class User {
+
     @Id
+    @Column(name="id")
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer id;
+    private Integer Id;
+    @Column(name="name")
     private String username;
+    @Column(name="username")
     private String name;
+    @Column(name="email")
     private String email;
+    @Column(name="password")
     private String password;
+    @Column(name="date")
     private Date registration;
 
     public Integer getId() {
-        return id;
+        return Id;
     }
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public void setId(Integer id) { Id = id; }
 
     public String getUsername() {
         return username;
@@ -52,10 +55,7 @@ public class User {
         this.password = password;
     }
 
-    public Date getRegistration() {
-        return registration;
-    }
-    public void setRegistration(Date registration) {
-        this.registration = registration;
-    }
+    public Date getRegistration() { return registration; }
+
+    public void setRegistration(Date registration) { this.registration = registration; }
 }

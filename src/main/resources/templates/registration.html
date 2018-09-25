@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/head :: head"/>
-<body th:include="fragments/head :: body">
-    <form action="">
+<head>
+    <script src="/js/registration.js"></script>
+</head>
+<body>
+<form action="#" th:action="@{/registration}" th:object="${registration}" method="post">
         <br>Name</br>
-        <br><input type="text" name="name"></br>
+        <br><input type="text" name="name" th:field="*{name}" required></br>
         <br>Username</br>
-        <br><input type="text" name="username"></br>
+        <br><input type="text" name="username" th:field="*{username}" required></br>
         <br>Password</br>
-        <br><input type="password" name="password"></br>
+        <br><input type="password" name="password" th:field="*{password}" required></br>
         <br>Re-enter password</br>
-        <br><input type="password" name="check"></br>
+        <br><input type="password" name="check" th:field="*{check}" required></br>
         <br>Email</br>
-        <br><input type="text" name="email"></br>
+        <br><input type="text" name="email" th:field="*{email}" required></br>
         <br><input type="submit" value="Register"></br>
     </form>
 </body>
