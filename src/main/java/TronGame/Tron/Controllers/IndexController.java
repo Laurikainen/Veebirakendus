@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
         return "user";
     }
 
-    @RequestMapping("/login")
-    public String login(){ return "login"; }
-
     @RequestMapping("/forum")
     public String forum(){ return "forum"; }
 

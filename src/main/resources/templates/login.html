@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/head :: head"/>
-<body th:include="fragments/head :: body">
-
-
-
-
-</body>
+<body th:include="fragments/head :: body"></body>
 
 <head>
     <meta name="google-signin-scope" content="profile email">
@@ -16,6 +11,14 @@
 
 
 <body>
+<form th:action="@{/login}" th:object="${loginForm}" method="post">
+    <p th:if="${invalidCredentials}" th:class="error">Username or password incorrect</p>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" autofocus="autofocus"/>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" autofocus="autofocus"/>
+    <input type="submit" value="Login">
+</form>
 
 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" id="loginGoogle"></div>
 <script>

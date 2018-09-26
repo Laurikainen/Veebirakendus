@@ -12,9 +12,9 @@ public class RegistrationForm {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer Id;
     @Column(name="name")
-    private String username;
-    @Column(name="username")
     private String name;
+    @Column(name="username")
+    private String username;
     @Column(name="email")
     private String email;
     @Column(name="password")
