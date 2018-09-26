@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" th:lang="#{language_code}">
 <head th:fragment="head">
     <meta charset="UTF-8">
     <title>Tron Online</title>
@@ -7,11 +7,13 @@
 </head>
 <body th:fragment="body">
     <ul>
-        <li><a th:href="@{/}">Game Info</a></li>
-        <li><a th:href="@{/play_game}">Play Game</a></li>
-        <li><a th:href="@{/forum}">Forum</a></li>
-        <li><a th:href="@{/user}">User</a></li>
-        <li style="float:right"><a th:href="@{/login}">Log In</a></li>
+        <li><a th:href="@{/}" th:text="#{homepage}"></a></li>
+        <li><a th:href="@{/play_game}" th:text="#{play_game}"></a></li>
+        <li><a th:href="@{/forum}" th:text="#{forum}"></a></li>
+        <li><a th:href="@{/user}" th:text="#{user}"></a></li>
+        <li style="float:right"><a th:href="@{/login}" th:text="#{login}"></a></li>
+        <li style="float:right"><a href="?lang=en" rel="alternate" hreflang="en" th:text="#{en_choice}"></a></li>
+        <li style="float:right"><a href="?lang=et" rel="alternate" hreflang="et" th:text="#{et_choice}"></a></li>
     </ul>
 </body>
 </html>

@@ -15,6 +15,7 @@ import java.util.Date;
 @Controller
 @RequestMapping(path="/demo")
 public class UserController {
+
     @Autowired
     private Repository Repository;
 
