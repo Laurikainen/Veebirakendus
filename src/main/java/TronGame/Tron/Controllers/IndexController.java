@@ -25,9 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
     @RequestMapping("/play_game")
     public String play_game(){ return "play_game"; }
 
-    @RequestMapping("/registration")
-    public String registration(){ return "registration"; }
-
     @RequestMapping("/new_post")
     public String new_post(){ return "new_post"; }
 

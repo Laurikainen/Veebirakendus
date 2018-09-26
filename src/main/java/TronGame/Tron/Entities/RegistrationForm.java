@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name="user_data")
-public class User {
+public class RegistrationForm {
 
     @Id
     @Column(name="id")
@@ -21,6 +21,8 @@ public class User {
     private String password;
     @Column(name="date")
     private Date registration;
+
+    public RegistrationForm() { super(); }
 
     public Integer getId() {
         return Id;

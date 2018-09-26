@@ -1,6 +1,6 @@
 package TronGame.Tron.Repositories;
 
 import org.springframework.data.repository.CrudRepository;
-import TronGame.Tron.Entities.User;
+import TronGame.Tron.Entities.RegistrationForm;
 
-public interface Repository extends CrudRepository<User, Integer> { }
+public interface Repository extends CrudRepository<RegistrationForm, Integer> { }
