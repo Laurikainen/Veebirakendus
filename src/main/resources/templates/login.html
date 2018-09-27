@@ -12,12 +12,12 @@
 
 <body>
 <form th:action="@{/login}" th:object="${loginForm}" method="post">
-    <p th:if="${invalidCredentials}" th:class="error">Username or password incorrect</p>
-    <label for="username">Username</label>
+    <p th:if="${invalidCredentials}" th:class="error" th:text="#{incorrect}"></p>
+    <label for="username" th:text="#{username}">Username</label>
     <input type="text" id="username" name="username" autofocus="autofocus"/>
-    <label for="password">Password</label>
+    <label for="password" th:text="#{password}">Password</label>
     <input type="password" id="password" name="password" autofocus="autofocus"/>
-    <input type="submit" value="Login">
+    <input type="submit" th:value="#{login}">
 </form>
 
 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" id="loginGoogle"></div>

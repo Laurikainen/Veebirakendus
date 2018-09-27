@@ -1,9 +1,8 @@
 package TronGame.Tron.Controllers;
 
 import TronGame.Tron.Entities.RegistrationForm;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,9 +32,12 @@ public class RegistrationController {
     public String register (@ModelAttribute(name="registrationForm") RegistrationForm registrationForm, Model model) throws SQLException {
 
         String SQL = "SELECT * FROM v_users WHERE username='"+registrationForm.getUsername()+"'";
-        Map map = jdbcTemplate.queryForMap(SQL);
 
-        if (map.size()==0) {
+
+        try {
+            jdbcTemplate.queryForMap(SQL);
+        }
+        catch (EmptyResultDataAccessException e) {
             RegistrationForm user = new RegistrationForm();
             user.setUsername(registrationForm.getUsername());
             user.setName(registrationForm.getName());
