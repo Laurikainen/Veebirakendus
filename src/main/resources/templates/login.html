@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!--<head />-->
 <!--<body th:include="fragments/head :: body"></body>-->
 
@@ -13,11 +13,11 @@
 <body>
 <form th:action="@{/login}" th:object="${loginForm}" method="post">
     <p th:if="${invalidCredentials}" th:class="error" th:text="#{incorrect}"></p>
-    <br><label for="username" th:text="#{username}">Username</label></br>
-    <input type="text" id="username" name="username"/>
-    <br><label for="password" th:text="#{password}">Password</label></br>
-    <input type="password" id="password" name="password"/>
-    <br><input type="submit" th:value="#{login}"></br>
+    <p><label for="username" th:text="#{username}">Username</label>
+    <input type="text" id="username" name="username"/></p>
+    <p><label for="password" th:text="#{password}">Password</label>
+    <input type="password" id="password" name="password"/></p>
+    <input type="submit" th:value="#{login}">
 </form>
 
 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" id="loginGoogle"></div>
