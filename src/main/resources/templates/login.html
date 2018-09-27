@@ -17,6 +17,7 @@
     <input type="password" id="password" name="password"/></p>
     <input type="submit" th:value="#{login}">
 </form>
+<a th:href="@{/registration}" th:text="#{register}"></a>
 
 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" id="loginGoogle"></div>
 <script>

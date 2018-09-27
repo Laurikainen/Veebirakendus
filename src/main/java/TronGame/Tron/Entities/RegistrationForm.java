@@ -9,7 +9,6 @@ public class RegistrationForm {
 
     @Id
     @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer Id;
     @Column(name="name")
     private String name;

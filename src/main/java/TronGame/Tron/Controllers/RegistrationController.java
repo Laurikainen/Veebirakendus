@@ -11,14 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.sql.*;
-import java.util.Date;
-import java.util.Map;
 
 @Controller
 public class RegistrationController {
-
-    @Autowired
-    private TronGame.Tron.Repositories.Repository Repository;
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -33,18 +28,16 @@ public class RegistrationController {
 
         String SQL = "SELECT * FROM v_users WHERE username='"+registrationForm.getUsername()+"'";
 
-
         try {
             jdbcTemplate.queryForMap(SQL);
         }
         catch (EmptyResultDataAccessException e) {
-            RegistrationForm user = new RegistrationForm();
-            user.setUsername(registrationForm.getUsername());
-            user.setName(registrationForm.getName());
-            user.setEmail(registrationForm.getEmail());
-            user.setPassword(registrationForm.getPassword());
-            user.setRegistration(new Date());
-            Repository.save(user);
+
+            String SQL_INSERT = "INSERT INTO heroku_ed29bc9daeb5bbf.user_data (name, username, password, email, date)\n" +
+                    "values ('"+registrationForm.getName()+"', '"+
+                    registrationForm.getUsername()+"', '"+ registrationForm.getPassword()+"', '"+
+                    registrationForm.getEmail()+"', '"+java.time.LocalDateTime.now()+"')";
+            jdbcTemplate.execute(SQL_INSERT);
             return "main_page";
         }
         model.addAttribute("invalidCredentials", true);
