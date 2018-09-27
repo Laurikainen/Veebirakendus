@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:remove="tag">
+<header th:fragment="navigation">
+    <ul>
+        <li><a th:href="@{/}" th:text="#{homepage}"></a></li>
+        <li><a th:href="@{/play_game}" th:text="#{play_game}"></a></li>
+        <li><a th:href="@{/forum}" th:text="#{forum}"></a></li>
+        <li><a th:href="@{/user}" th:text="#{user}"></a></li>
+        <li style="float:right"><a th:href="@{/login}" th:text="#{login}"></a></li>
+        <li style="float:right"><a href="?lang=en" rel="alternate" hreflang="en" th:text="#{en_choice}"></a></li>
+        <li style="float:right"><a href="?lang=et" rel="alternate" hreflang="et" th:text="#{et_choice}"></a></li>
+    </ul>
+</header>
+</html>

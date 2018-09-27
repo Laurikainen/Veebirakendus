@@ -1,20 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:lang="#{language_code}">
-<head th:fragment="head" lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
     <meta charset="UTF-8">
     <title>Tron Online</title>
     <link rel="stylesheet" type="text/css" href="/static/css/stiil.css"/>
 </head>
-<body th:fragment="body">
-    <ul>
-        <li><a th:href="@{/}" th:text="#{homepage}"></a></li>
-        <li><a th:href="@{/play_game}" th:text="#{play_game}"></a></li>
-        <li><a th:href="@{/forum}" th:text="#{forum}"></a></li>
-        <li><a th:href="@{/user}" th:text="#{user}"></a></li>
-        <li style="float:right"><a th:href="@{/login}" th:text="#{login}"></a></li>
-        <li style="float:right"><a href="?lang=en" rel="alternate" hreflang="en" th:text="#{en_choice}"></a></li>
-        <li style="float:right"><a href="?lang=et" rel="alternate" hreflang="et" th:text="#{et_choice}"></a></li>
-    </ul>
-</body>
 </html>
 

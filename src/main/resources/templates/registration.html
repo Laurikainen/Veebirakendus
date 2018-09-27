@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html th:lang="#{language_code}" xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/head :: head"/>
 <body>
+<header th:include="fragments/navigation :: navigation"/>
 <form th:action="@{/registration}" th:object="${registrationForm}" method="post">
         <p th:if="${invalidCredentials}" th:class="error" th:text="#{username_taken}"></p>
         <p><label for="name" th:text="#{name}"></label>
