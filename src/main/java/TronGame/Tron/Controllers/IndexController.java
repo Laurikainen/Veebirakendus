@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
     }
 
     @RequestMapping("/user")
-    public String user(){
-        return "user";
-    }
+    public String user(){ return "user"; }
 
     @RequestMapping("/forum")
     public String forum(){ return "forum"; }

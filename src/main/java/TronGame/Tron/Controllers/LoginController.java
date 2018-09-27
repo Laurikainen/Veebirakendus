@@ -34,6 +34,6 @@ public class LoginController {
             model.addAttribute("invalidCredentials", true);
             return "login";
         }
-        return "main_page";
+        return "user";
     }
 }
