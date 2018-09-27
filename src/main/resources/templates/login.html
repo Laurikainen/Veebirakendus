@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/head :: head"/>
-<body th:include="fragments/head :: body"></body>
+<!--<head />-->
+<!--<body th:include="fragments/head :: body"></body>-->
 
-<head>
+<head th:include="fragments/head :: head">
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="475705122331-7tfp07jq3pogtcvu743esnl6vf3kc8it.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -13,11 +13,11 @@
 <body>
 <form th:action="@{/login}" th:object="${loginForm}" method="post">
     <p th:if="${invalidCredentials}" th:class="error" th:text="#{incorrect}"></p>
-    <label for="username" th:text="#{username}">Username</label>
-    <input type="text" id="username" name="username" autofocus="autofocus"/>
-    <label for="password" th:text="#{password}">Password</label>
-    <input type="password" id="password" name="password" autofocus="autofocus"/>
-    <input type="submit" th:value="#{login}">
+    <br><label for="username" th:text="#{username}">Username</label></br>
+    <input type="text" id="username" name="username"/>
+    <br><label for="password" th:text="#{password}">Password</label></br>
+    <input type="password" id="password" name="password"/>
+    <br><input type="submit" th:value="#{login}"></br>
 </form>
 
 <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" id="loginGoogle"></div>

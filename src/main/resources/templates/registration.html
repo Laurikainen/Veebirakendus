@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-
-</head>
+<head th:include="fragments/head :: head"/>
 <body>
 <form th:action="@{/registration}" th:object="${registrationForm}" method="post">
         <p th:if="${invalidCredentials}" th:class="error" th:text="#{username_taken}"></p>
-        <label for="name" th:text="#{name}"></label>
-        <input type="text" id="name" name="name" autofocus="autofocus"/>
-        <label for="username" th:text="#{username}"></label>
-        <input type="text" id="username" name="username" autofocus="autofocus"/>
-        <label for="password" th:text="#{password}"></label>
-        <input type="password" id="password" name="password" autofocus="autofocus"/>
-        <label for="check" th:text="#{check}"></label>
-        <input type="password" id="check" name="check" autofocus="autofocus"/>
-        <label for="email" th:text="#{email}"></label>
-        <input type="text" id="email" name="email" autofocus="autofocus"/>
-        <input type="submit" th:value="#{register}">
+        <br><label for="name" th:text="#{name}"></label></br>
+        <input type="text" id="name" name="name"/>
+        <br><label for="username" th:text="#{username}"></label></br>
+        <input type="text" id="username" name="username"/>
+        <br><label for="password" th:text="#{password}"></label></br>
+        <input type="password" id="password" name="password"/>
+        <br><label for="check" th:text="#{check}"></label></br>
+        <input type="password" id="check" name="check"/>
+        <br><label for="email" th:text="#{email}"></label></br>
+        <input type="text" id="email" name="email"/>
+        <br><input type="submit" th:value="#{register}"></br>
     </form>
 </body>
 </html>
