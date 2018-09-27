@@ -29,8 +29,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
     @RequestMapping("/test")
     public String test(){ return "test"; }
 
-
-    @RequestMapping("/googlee5541141b" +
-            "a3fb51d.html")
+    @RequestMapping("/googlee5541141b" + "a3fb51d.html")
     public String googlee5541141ba3fb51d(){ return "googlee5541141ba3fb51d.html"; }
 }

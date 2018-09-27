@@ -26,18 +26,23 @@ public class RegistrationController {
     @RequestMapping(value="/registration", method=RequestMethod.POST)
     public String register (@ModelAttribute(name="registrationForm") RegistrationForm registrationForm, Model model) throws SQLException {
 
-        String SQL = "SELECT * FROM v_users WHERE username='"+registrationForm.getUsername()+"'";
+        String SQL = "SELECT username FROM v_users WHERE username='"+registrationForm.getUsername()+"'";
 
         try {
             jdbcTemplate.queryForMap(SQL);
         }
         catch (EmptyResultDataAccessException e) {
 
-            String SQL_INSERT = "INSERT INTO heroku_ed29bc9daeb5bbf.user_data (name, username, password, email, date)\n" +
+            String SQL_INSERT = "INSERT INTO user_data (name, username, password, email, date)" +
                     "values ('"+registrationForm.getName()+"', '"+
                     registrationForm.getUsername()+"', '"+ registrationForm.getPassword()+"', '"+
                     registrationForm.getEmail()+"', '"+java.time.LocalDateTime.now()+"')";
             jdbcTemplate.execute(SQL_INSERT);
+
+            String SQL_ROLES = "INSERT INTO user_role (username, role)" +
+                    "values ('"+ registrationForm.getUsername()+"', 'USER')";
+            jdbcTemplate.execute(SQL_ROLES);
+
             return "main_page";
         }
         model.addAttribute("invalidCredentials", true);

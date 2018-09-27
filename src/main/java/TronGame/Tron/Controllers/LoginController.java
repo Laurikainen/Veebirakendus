@@ -29,6 +29,7 @@ public class LoginController {
 
         try {
             jdbcTemplate.queryForMap(SQL);
+
         }
         catch (EmptyResultDataAccessException e) {
             model.addAttribute("invalidCredentials", true);
