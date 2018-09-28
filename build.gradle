@@ -34,4 +34,6 @@ dependencies {
     compile('javax.xml.bind:jaxb-api:2.3.0')
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile("org.springframework.boot:spring-boot-starter-security")
+    compile('org.springframework.boot:spring-boot-starter-jdbc')
+
 }

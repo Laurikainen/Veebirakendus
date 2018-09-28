@@ -3,5 +3,9 @@
 <head th:include="fragments/head :: head"/>
 <body>
 <header th:include="fragments/navigation :: navigation"/>
+<!--Kuva kasutaja info
+<p>Hello, <span th:text="${
+    T(org.springframework.security.core.context.SecurityContextHolder)
+      .context.authentication.principal.username}"></span>!</p>-->
 </body>
 </html>

@@ -3,6 +3,7 @@ package TronGame.Tron.Entities;
 public class LoginForm {
     private String username;
     private String password;
+    private String role;
 
     public LoginForm() { super(); }
 
@@ -15,4 +16,7 @@ public class LoginForm {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getRole() { return role; }
+    public void setRole(String role) { this.role = role; }
 }
