@@ -3,7 +3,8 @@
 <head th:lang="#{language_code}" th:include="fragments/head :: head"/>
 <body>
 <header th:include="fragments/navigation :: navigation"/>
-<p th:if="${pictureUploaded}" th:class="error" th:text="#{picture_uploaded}"></p>
+
+<img id="profileImage" src="data:image/jpg;base64, [your byte array]">
 
 </body>
 </html>

@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
         return "main_page";
     }
 
-    @RequestMapping("/user")
-    public String user(){ return "user"; }
-
     @RequestMapping("/login")
     public String login(){ return "login"; }
 

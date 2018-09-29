@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html th:lang="#{language_code}" xmlns:th="http://www.thymeleaf.org">
+<head th:include="fragments/head :: head"/>
+<body>
+<header th:include="fragments/navigation :: navigation"/>
+
+<p th:if="${pictureNotUploaded}" th:class="error" th:text="#{picture_not_uploaded}"></p>
+<p th:if="${pictureUploaded}" th:class="error" th:text="#{picture_uploaded}"></p>
+
+<form th:action="@{/upload}" th:object="${uploadForm}" enctype="multipart/form-data" method="post">
+    <p><label for="data" th:text="#{picture}"></label></p>
+    <input type="file" id="data" name="data" required/>
+    <input type="submit" th:value="#{submit}">
+</form>
+</body>
+</html>

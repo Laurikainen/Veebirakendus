@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.sql.*;
-
 @Controller
 public class RegistrationController {
 
@@ -19,12 +17,10 @@ public class RegistrationController {
     private JdbcTemplate jdbcTemplate;
 
     @RequestMapping(value="/registration", method=RequestMethod.GET)
-    public String getRegistrationForm() {
-        return "registration";
-    }
+    public String getRegistrationForm() { return "registration"; }
 
     @RequestMapping(value="/registration", method=RequestMethod.POST)
-    public String register (@ModelAttribute(name="registrationForm") RegistrationForm registrationForm, Model model) throws SQLException {
+    public String register (@ModelAttribute(name="registrationForm") RegistrationForm registrationForm, Model model) {
 
         String SQL = "SELECT username FROM users WHERE username='"+registrationForm.getUsername()+"'";
 

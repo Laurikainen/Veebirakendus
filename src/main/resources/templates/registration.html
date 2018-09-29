@@ -4,8 +4,9 @@
 <body>
 <header th:include="fragments/navigation :: navigation"/>
 
+<p th:if="${invalidCredentials}" th:class="error" th:text="#{username_taken}"></p>
+
 <form th:action="@{/registration}" th:object="${registrationForm}" method="post">
-        <p th:if="${invalidCredentials}" th:class="error" th:text="#{username_taken}"></p>
         <p><label for="name" th:text="#{name}"></label>
         <input type="text" id="name" name="name" required/></p>
         <p><label for="username" th:text="#{username}"></label>
