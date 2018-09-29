@@ -3,9 +3,29 @@
 <head th:include="fragments/head :: head"/>
 <body>
 <header th:include="fragments/navigation :: navigation"/>
-<!--Kuva kasutaja info
-<p>Hello, <span th:text="${
-    T(org.springframework.security.core.context.SecurityContextHolder)
-      .context.authentication.principal.username}"></span>!</p>-->
+
+<div id="map" style="width:400px;height:400px"></div>
+
+<script>
+function myMap() {
+var myCenter = new google.maps.LatLng(58.3782565,26.71511220000002);
+var mapCanvas = document.getElementById("map");
+var mapOptions = {center: myCenter, zoom: 5,}
+var map = new google.maps.Map(mapCanvas, mapOptions);
+var marker = new google.maps.Marker({position:myCenter});
+var infowindow = new google.maps.InfoWindow({content:"Latitude: 58.4, longitude: 26.7"});
+marker.setMap(map);
+
+google.maps.event.addListener(marker,'click',function() {
+      map.setZoom(17);
+      map.setCenter(marker.getPosition());
+      infowindow.open(map,marker);
+      });
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsOG10fC3idGbjmF9turyt2JVam0We8aE&callback=myMap"></script>
+
+
 </body>
 </html>
