@@ -10,9 +10,9 @@
 <form th:action="@{/login}" th:object="${loginForm}" method="post">
     <p th:if="${invalidCredentials}" th:class="error" th:text="#{incorrect}"></p>
     <p><label for="username" th:text="#{username}"></label>
-    <input type="text" id="username" name="username"/></p>
+    <input type="text" id="username" name="username" required/></p>
     <p><label for="password" th:text="#{password}"></label>
-    <input type="password" id="password" name="password"/></p>
+    <input type="password" id="password" name="password" required/></p>
     <input type="submit" th:value="#{login}">
 </form>
 

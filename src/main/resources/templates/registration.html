@@ -3,18 +3,19 @@
 <head th:include="fragments/head :: head"/>
 <body>
 <header th:include="fragments/navigation :: navigation"/>
+
 <form th:action="@{/registration}" th:object="${registrationForm}" method="post">
         <p th:if="${invalidCredentials}" th:class="error" th:text="#{username_taken}"></p>
         <p><label for="name" th:text="#{name}"></label>
-        <input type="text" id="name" name="name"/></p>
+        <input type="text" id="name" name="name" required/></p>
         <p><label for="username" th:text="#{username}"></label>
-        <input type="text" id="username" name="username"/></p>
+        <input type="text" id="username" name="username" required/></p>
         <p><label for="password" th:text="#{password}"></label>
-        <input type="password" id="password" name="password"/></p>
+        <input type="password" id="password" name="password" required/></p>
         <p><label for="check" th:text="#{check}"></label>
-        <input type="password" id="check" name="check"/></p>
+        <input type="password" id="check" name="check" required/></p>
         <p><label for="email" th:text="#{email}"></label>
-        <input type="text" id="email" name="email"/></p>
+        <input type="text" id="email" name="email" required/></p>
         <input type="submit" th:value="#{register}">
     </form>
 </body>
