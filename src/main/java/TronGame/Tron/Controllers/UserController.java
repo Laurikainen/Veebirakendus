@@ -28,10 +28,12 @@ public class UserController {
     public ModelAndView user() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ModelAndView maw = new ModelAndView("user");
+        Map<String, Object> map;
         try {
             String SQL = "SELECT user_data.name, user_data.username, user_data.email, pictures.file_name, pictures.data " +
                     "FROM user_data JOIN pictures on user_data.username=pictures.username WHERE user_data.username='"+auth.getName()+"'";
-            Map<String, Object> map = jdbcTemplate.queryForMap(SQL);
+            map = jdbcTemplate.queryForMap(SQL);
+
             Object name = map.get("name");
             Object username = map.get("username");
             Object email = map.get("email");
@@ -45,7 +47,17 @@ public class UserController {
             maw.addObject("dbpicture", picture);
 
         } catch (Exception e) {
-            System.out.println(e);
+            String SQL = "SELECT name, username, email " +
+                    "FROM user_data WHERE username='"+auth.getName()+"'";
+            map = jdbcTemplate.queryForMap(SQL);
+
+            Object name = map.get("name");
+            Object username = map.get("username");
+            Object email = map.get("email");
+
+            maw.addObject("dbname", name);
+            maw.addObject("dbusername", username);
+            maw.addObject("dbemail", email);
         }
         return maw;
 
