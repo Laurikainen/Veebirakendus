@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html th:lang="#{language_code}" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments/head :: head">
+</head>
+
 <body>
 <header th:include="fragments/navigation :: navigation"/>
 <form th:action="@{/login}" th:object="${loginForm}" method="post">
@@ -15,7 +19,6 @@
        th:value="${_csrf.token}"/>
 
 <a th:href="@{/registration}" th:text="#{register}"></a>
-
 </body>
 
 <!--<body>-->
