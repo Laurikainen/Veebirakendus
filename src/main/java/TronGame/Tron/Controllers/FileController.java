@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
+import java.util.Map;
 
 @Controller
 public class FileController {
@@ -27,10 +28,17 @@ public class FileController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         MultipartFile file = uploadForm.getData();
         try {
-            String SQL_INSERT = "INSERT INTO pictures(username, name, img_data)" +
-                    "values ('" + auth.getName() + "', '" + file.getOriginalFilename() + "', '" + file.getBytes() + "')";
-            jdbcTemplate.execute(SQL_INSERT);
-
+            try {
+                String SQL = "SELECT * FROM pictures WHERE username='"+auth.getName()+"'";
+                Map<String, Object> map = jdbcTemplate.queryForMap(SQL);
+                model.addAttribute("pictureExists", true);
+                return "upload";
+            }
+            catch (Exception e) {
+                String SQL_INSERT = "INSERT INTO pictures(username, file_name, img_data)" +
+                        "values ('" + auth.getName() + "', '" + file.getOriginalFilename() + "', '" + file.getBytes() + "')";
+                jdbcTemplate.execute(SQL_INSERT);
+            }
         } catch (IOException ex) {
             model.addAttribute("pictureNotUploaded", true);
             return "upload";

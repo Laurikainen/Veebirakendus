@@ -6,10 +6,11 @@
 
 <p th:if="${pictureNotUploaded}" th:class="error" th:text="#{picture_not_uploaded}"></p>
 <p th:if="${pictureUploaded}" th:class="error" th:text="#{picture_uploaded}"></p>
+<p th:if="${pictureExists}" th:class="error" th:text="#{picture_exists}"></p>
 
 <form th:action="@{/upload}" th:object="${uploadForm}" enctype="multipart/form-data" method="post">
     <p><label for="data" th:text="#{picture}"></label></p>
-    <input type="file" id="data" name="data" required/>
+    <input type="file" id="data" name="data" accept="image/*" required/>
     <input type="submit" th:value="#{submit}">
 </form>
 </body>
