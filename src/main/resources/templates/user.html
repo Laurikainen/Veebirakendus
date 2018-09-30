@@ -3,9 +3,16 @@
 <head th:lang="#{language_code}" th:include="fragments/head :: head"/>
 <body>
 <header th:include="fragments/navigation :: navigation"/>
-
-
-
+<p th:text="#{sql_name}"></p>
+<p th:text="${dbname}"></p>
+<p th:text="#{sql_username}"></p>
+<p th:text="${dbusername}"></p>
+<p th:text="#{sql_email}"></p>
+<p th:text="${dbemail}"></p>
+<p th:text="#{sql_picture}"></p>
+<p th:text="${dbpicture_name}"></p>
+<p th:text="#{sql_data}"></p>
+<p th:text="${dbpicture}"></p>
 
 <!--<img id="profileImage" src="data:image/jpg;base64, [your byte array]">-->
 

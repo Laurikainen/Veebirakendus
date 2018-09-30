@@ -1,10 +1,14 @@
 package TronGame.Tron.Entities;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name="user_data")
-public class RegistrationForm {
+public class RegistrationForm implements Serializable {
 
     @Id
     private Integer id;

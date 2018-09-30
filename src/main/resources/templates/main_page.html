@@ -4,8 +4,7 @@
 <body>
 <header th:include="fragments/navigation :: navigation"/>
 
-<div id="map" style="width:400px;height:400px"></div>
-
+<p><div id="map" style="width:400px;height:400px"></div></p>
 <script>
 function myMap() {
 var myCenter = new google.maps.LatLng(58.3782565,26.71511220000002);
@@ -23,9 +22,6 @@ google.maps.event.addListener(marker,'click',function() {
       });
 }
 </script>
-
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsOG10fC3idGbjmF9turyt2JVam0We8aE&callback=myMap"></script>
-
-
 </body>
 </html>
