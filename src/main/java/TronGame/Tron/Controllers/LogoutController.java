@@ -1,5 +1,6 @@
 package TronGame.Tron.Controllers;
 
+import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +17,8 @@ public class LogoutController {
         new SecurityContextLogoutHandler().logout(request, null, null);
         try {
             //sending back to client app
-            response.sendRedirect(request.getHeader("referer"));
+            //response.sendRedirect(request.getHeader("referer"));
+            new DefaultRedirectStrategy().sendRedirect(request, response, "/");
         } catch (IOException e) {
             e.printStackTrace();
         }

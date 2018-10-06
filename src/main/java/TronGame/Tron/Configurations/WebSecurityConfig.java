@@ -85,11 +85,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
     }
 
+
+
     /*This method for creating filter for OAuth authentication.*/
     private OAuth2ClientAuthenticationProcessingFilter filter() {
         //Creating the filter for "/google/login" url
         OAuth2ClientAuthenticationProcessingFilter oAuth2Filter = new OAuth2ClientAuthenticationProcessingFilter(
                 "/login");
+
 
         //Creating the rest template for getting connected with OAuth service.
         //The configuration parameters will inject while creating the bean.
