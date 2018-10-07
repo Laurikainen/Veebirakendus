@@ -31,16 +31,6 @@ li a:hover {
     background-color: #808080;
 }
 
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 16px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-}
-
 #loginGoogle{
     padding: 14px 16px;
     width: 100%;

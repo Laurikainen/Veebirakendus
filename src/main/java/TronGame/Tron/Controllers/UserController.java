@@ -6,9 +6,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class UserController {
@@ -16,10 +17,7 @@ public class UserController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    /*@Autowired
-    private Repo repo;
-
-    @GetMapping("/notes")
+    /*@GetMapping("/notes")
     public List<RegistrationForm> getAllNotes() {
         return repo.findAll();
     }*/
@@ -30,23 +28,34 @@ public class UserController {
         ModelAndView maw = new ModelAndView("user");
         Map<String, Object> map;
         try {
-            String SQL = "SELECT user_data.name, user_data.username, user_data.email, pictures.file_name, pictures.data " +
-                    "FROM user_data JOIN pictures on user_data.username=pictures.username WHERE user_data.username='"+auth.getName()+"'";
+            String SQL = "SELECT user_data.name, user_data.username, user_data.email, pictures.file_name" +
+                    " FROM user_data JOIN pictures on user_data.username=pictures.username WHERE user_data.username='"+auth.getName()+"'";
             map = jdbcTemplate.queryForMap(SQL);
 
             Object name = map.get("name");
             Object username = map.get("username");
             Object email = map.get("email");
             Object picture_name = map.get("file_name");
-            Object picture = map.get("picture");
 
             maw.addObject("dbname", name);
             maw.addObject("dbusername", username);
             maw.addObject("dbemail", email);
             maw.addObject("dbpicture_name", picture_name);
-            maw.addObject("dbpicture", picture);
+
+            String SQL_BLOB = "SELECT img_data FROM pictures WHERE username='"+auth.getName()+"'";
+            map = jdbcTemplate.queryForMap(SQL_BLOB);
+            StringBuilder str = new StringBuilder();
+                byte[] blob = (byte[]) map.get("img_data");
+                for (int i = 0; i < blob.length; i++) {
+                    str.append(blob[i]);
+                }
+
+            System.out.println(str);
+            maw.addObject("dbpicture", blob);
+            maw.addObject("dbpic", "<img id='profileImage' src='data:image/png;base64, "+ str +"'>");
 
         } catch (Exception e) {
+            System.out.println(e);
             String SQL = "SELECT name, username, email " +
                     "FROM user_data WHERE username='"+auth.getName()+"'";
             map = jdbcTemplate.queryForMap(SQL);
@@ -62,30 +71,4 @@ public class UserController {
         return maw;
 
     }
-
-    /*// Delete a Note
-    @DeleteMapping("/notes/{id}")
-    public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Long noteId) {
-        Note note = noteRepository.findById(noteId)
-                .orElseThrow(() -> new ResourceNotFoundException("Note", "id", noteId));
-
-        noteRepository.delete(note);
-
-        return ResponseEntity.ok().build();
-    }*/
-
-    /*// Update a Note
-    @PutMapping("/notes/{id}")
-    public Note updateNote(@PathVariable(value = "id") Long noteId,
-                           @Valid @RequestBody Note noteDetails) {
-
-        Note note = noteRepository.findById(noteId)
-                .orElseThrow(() -> new ResourceNotFoundException("Note", "id", noteId));
-
-        note.setTitle(noteDetails.getTitle());
-        note.setContent(noteDetails.getContent());
-
-        Note updatedNote = noteRepository.save(note);
-        return updatedNote;
-    }*/
 }

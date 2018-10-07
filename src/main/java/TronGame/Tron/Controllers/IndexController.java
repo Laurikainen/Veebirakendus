@@ -26,9 +26,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
     @RequestMapping("/privacy_policy")
     public String privacy_policy(){ return "privacy_policy"; }
 
-    /*@RequestMapping("/test")
-    public String test(){ return "test"; }
-    */
+    @RequestMapping("/map")
+    public String map(){ return "map"; }
 
     @RequestMapping("/googlee5541141b" + "a3fb51d.html")
     public String googlee5541141ba3fb51d(){ return "googlee5541141ba3fb51d.html"; }

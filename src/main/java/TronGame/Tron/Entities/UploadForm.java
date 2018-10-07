@@ -1,21 +1,54 @@
 package TronGame.Tron.Entities;
 
-import org.springframework.web.multipart.MultipartFile;
+import javax.persistence.*;
 
+@Entity
+@Table(name="profile")
 public class UploadForm {
 
-    private String id;
-    private MultipartFile data;
+    @Id
+    @Column(name="username")
+    private String username;
 
-    public UploadForm() { super(); }
+    @Column(name="picture")
+    @Lob
+    private byte[] data;
 
-    public String getId() {
-        return id;
+    @Column(name="title")
+    private String title;
+
+    @Column (name="type")
+    private  String type;
+
+    public String getUsername() {
+        return username;
     }
-    public void setId(String id) {
-        this.id = id;
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public MultipartFile getData() { return data; }
-    public void setData(MultipartFile data) { this.data = data; }
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

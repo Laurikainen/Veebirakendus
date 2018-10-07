@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name="user_data")
-public class RegistrationForm implements Serializable {
+public class RegistrationForm {
 
     @Id
     private Integer id;
