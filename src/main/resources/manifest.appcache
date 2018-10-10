@@ -1,0 +1,11 @@
+CACHE MANIFEST
+
+
+CACHE:
+static/css/stiil.css
+
+
+NETWORK:
+http://*
+https://*
+*
