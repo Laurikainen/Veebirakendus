@@ -3,10 +3,13 @@ package TronGame.Tron.Controllers;
 import TronGame.Tron.Entities.StatisticsForm;
 import TronGame.Tron.Repositories.RegistrationRepository;
 import TronGame.Tron.Repositories.StatisticsRepository;
+import TronGame.Tron.Services.UserService;
 import eu.bitwalker.useragentutils.Browser;
 import eu.bitwalker.useragentutils.OperatingSystem;
 import eu.bitwalker.useragentutils.UserAgent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 
     @Autowired
     private StatisticsRepository statisticsRepository;
-
-    @Autowired
-    private RegistrationRepository registrationRepository;
 
     @RequestMapping("/")
     public String main_page(HttpServletRequest request){
@@ -41,12 +41,14 @@ import javax.servlet.http.HttpServletRequest;
 
     @RequestMapping("/login")
     public String login(){
-        registrationRepository.form();
-        return "login";
-    }
+        return "login"; }
 
     @RequestMapping("/forum")
-    public String forum(){ return "forum"; }
+    public String forum(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        System.out.println(auth);
+        return "forum";
+    }
 
     @RequestMapping("/play_game")
     public String play_game(){ return "play_game"; }

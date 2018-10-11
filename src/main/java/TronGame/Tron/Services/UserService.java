@@ -15,7 +15,7 @@ public class UserService {
     @Autowired
     private RegistrationRepository registrationRepository;
 
-    public RegistrationForm newUser(Principal principal) {
+    public RegistrationForm user(Principal principal) {
         Map<String, Object> data = (Map<String, Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
 
         String firstName = (String) data.get("given_name");
@@ -44,7 +44,7 @@ public class UserService {
         RegistrationForm registrationForm = registrationRepository.findByEmail((String)data.get("email"));
 
         if(registrationForm == null) {
-            return newUser(principal);
+            return user(principal);
         }
 
         return registrationForm;
