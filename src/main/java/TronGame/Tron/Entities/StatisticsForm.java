@@ -15,43 +15,41 @@ public class StatisticsForm {
     @Column(name="os")
     private String os;
 
-    @Column(name="language")
-    private String lang;
+    @Column(name="browser")
+    private String browser;
 
-    @Column(name="architecture")
-    private String arc;
+    @Column(name="user_id")
+    private String user_id;
 
-    @Column(name="version")
-    private String version;
+    public Integer getId() {
+        return id;
+    }
 
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getOs() {
         return os;
     }
+
     public void setOs(String os) {
         this.os = os;
     }
 
-    public String getLang() {
-        return lang;
-    }
-    public void setLang(String lang) {
-        this.lang = lang;
+    public String getBrowser() {
+        return browser;
     }
 
-    public String getArc() {
-        return arc;
-    }
-    public void setArc(String arc) {
-        this.arc = arc;
+    public void setBrowser(String browser) {
+        this.browser = browser;
     }
 
-    public String getVersion() {
-        return version;
+    public String getUser_id() {
+        return user_id;
     }
-    public void setVersion(String version) {
-        this.version = version;
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 }

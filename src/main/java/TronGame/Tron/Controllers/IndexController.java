@@ -1,6 +1,5 @@
 package TronGame.Tron.Controllers;
 
-import TronGame.Tron.Configurations.Statistics;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
