@@ -4,6 +4,79 @@
 <body>
 <header th:include="fragments/navigation :: navigation"/>
 
+<b><h1 th:text="#{visitors}"></h1></b>
+
+<p></p>
+<table border="1">
+    <tr>
+        <th th:text="#{browser}"></th>
+        <th th:text="#{browser_count}"></th>
+    </tr>
+    <tr>
+        <td>
+            <table>
+                <tr th:each="browser : ${browsers}">
+                    <td th:text="${browser}"></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table>
+                <tr th:each="browser_count : ${browsers_count}">
+                    <td th:text="${browser_count}"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<p></p>
+<table border="1">
+    <tr>
+        <th th:text="#{os}"></th>
+        <th th:text="#{os_count}"></th>
+    </tr>
+    <tr>
+        <td>
+            <table>
+                <tr th:each="os : ${os}">
+                    <td th:text="${os}"></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table>
+                <tr th:each="os_count : ${os_count}">
+                    <td th:text="${os_count}"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<p></p>
+<table border="1">
+    <tr>
+        <th th:text="#{id}"></th>
+        <th th:text="#{id_count}"></th>
+    </tr>
+    <tr>
+        <td>
+            <table>
+                <tr th:each="id : ${id}">
+                    <td th:text="${id}"></td>
+                </tr>
+            </table>
+        </td>
+        <td>
+            <table>
+                <tr th:each="id_count : ${id_count}">
+                    <td th:text="${id_count}"></td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
 
 </body>
 </html>

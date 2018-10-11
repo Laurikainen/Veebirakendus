@@ -19,37 +19,17 @@ public class StatisticsForm {
     private String browser;
 
     @Column(name="user_id")
-    private String user_id;
+    private int user_id;
 
-    public Integer getId() {
-        return id;
-    }
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    public String getOs() { return os; }
+    public void setOs(String os) { this.os = os; }
 
-    public String getOs() {
-        return os;
-    }
+    public String getBrowser() { return browser; }
+    public void setBrowser(String browser) { this.browser = browser; }
 
-    public void setOs(String os) {
-        this.os = os;
-    }
-
-    public String getBrowser() {
-        return browser;
-    }
-
-    public void setBrowser(String browser) {
-        this.browser = browser;
-    }
-
-    public String getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
-    }
+    public int getUser_id() { return user_id; }
+    public void setUser_id(int user_id) { this.user_id = user_id; }
 }
