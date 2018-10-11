@@ -23,7 +23,6 @@ public class PictureController {
     @Autowired
     private PictureRepository pictureRepository;
 
-
     @RequestMapping(value = "/upload", method = RequestMethod.GET)
     public String getPictureForm() { return "upload"; }
 

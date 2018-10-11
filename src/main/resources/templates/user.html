@@ -3,16 +3,24 @@
 <head th:lang="#{language_code}" th:include="fragments/head :: head"/>
 <body>
 <header th:include="fragments/navigation :: navigation"/>
-<p th:text="#{sql_name}"></p>
+<!--<p th:text="#{sql_name}"></p>
 <p th:text="${dbname}"></p>
+
 <p th:text="#{sql_username}"></p>
-<p th:text="${dbusername}"></p>
-<p th:text="#{sql_email}"></p>
+<p th:text="${uploadForm.username}"></p>
+
+<p th:text="#{sql_locale}"></p>
 <p th:text="${dbemail}"></p>
+
+<p th:text="#{sql_type}"></p>
+<p th:text="${uploadForm.type}"></p>
+
 <p th:text="#{sql_picture}"></p>
-<p th:text="${dbpicture_name}"></p>
+<p th:text="${uploadForm.title}"></p>-->
+
 <p th:text="#{sql_data}"></p>
-<p th:text="${dbpicture}"></p>
-<p th:text="${dbpic}"></p>
+<img th:src="${image}">
+<a th:href="@{/delete}"><input type="submit" th:value="#{delete}"/></input></a>
+
 </body>
 </html>

@@ -1,20 +1,22 @@
 package TronGame.Tron.Controllers;
 
+import TronGame.Tron.Entities.RegistrationForm;
 import TronGame.Tron.Entities.StatisticsForm;
 import TronGame.Tron.Repositories.RegistrationRepository;
 import TronGame.Tron.Repositories.StatisticsRepository;
-import TronGame.Tron.Services.UserService;
 import eu.bitwalker.useragentutils.Browser;
 import eu.bitwalker.useragentutils.OperatingSystem;
 import eu.bitwalker.useragentutils.UserAgent;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
+import java.util.Map;
 
 @Controller
     public class IndexController {
@@ -22,8 +24,12 @@ import javax.servlet.http.HttpServletRequest;
     @Autowired
     private StatisticsRepository statisticsRepository;
 
+    @Autowired
+    private RegistrationRepository registrationRepository;
+
     @RequestMapping("/")
     public String main_page(HttpServletRequest request){
+
         String userAgentString = request.getHeader("User-Agent");
         UserAgent userAgent = UserAgent.parseUserAgentString(userAgentString);
         OperatingSystem os = userAgent.getOperatingSystem();
@@ -36,19 +42,15 @@ import javax.servlet.http.HttpServletRequest;
         statisticsForm.setUser_id(id);
 
         statisticsRepository.save(statisticsForm);
+
         return "main_page";
     }
 
     @RequestMapping("/login")
-    public String login(){
-        return "login"; }
+    public String login(){ return "login"; }
 
     @RequestMapping("/forum")
-    public String forum(){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        System.out.println(auth);
-        return "forum";
-    }
+    public String forum(){ return "forum"; }
 
     @RequestMapping("/play_game")
     public String play_game(){ return "play_game"; }

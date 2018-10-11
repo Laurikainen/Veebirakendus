@@ -1,74 +1,55 @@
 package TronGame.Tron.Controllers;
 
+import TronGame.Tron.Entities.RegistrationForm;
+import TronGame.Tron.Entities.UploadForm;
+import TronGame.Tron.Repositories.PictureRepository;
+import TronGame.Tron.Repositories.RegistrationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.*;
 
 @Controller
 public class UserController {
 
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private PictureRepository pictureRepository;
 
-    /*@GetMapping("/notes")
-    public List<RegistrationForm> getAllNotes() {
-        return repo.findAll();
-    }*/
+    @Autowired
+    private RegistrationRepository registrationRepository;
 
     @RequestMapping("/user")
-    public ModelAndView user() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        ModelAndView maw = new ModelAndView("user");
-        Map<String, Object> map;
-        try {
-            String SQL = "SELECT user_data.name, user_data.username, user_data.email, pictures.file_name" +
-                    " FROM user_data JOIN pictures on user_data.username=pictures.username WHERE user_data.username='"+auth.getName()+"'";
-            map = jdbcTemplate.queryForMap(SQL);
-
-            Object name = map.get("name");
-            Object username = map.get("username");
-            Object email = map.get("email");
-            Object picture_name = map.get("file_name");
-
-            maw.addObject("dbname", name);
-            maw.addObject("dbusername", username);
-            maw.addObject("dbemail", email);
-            maw.addObject("dbpicture_name", picture_name);
-
-            String SQL_BLOB = "SELECT img_data FROM pictures WHERE username='"+auth.getName()+"'";
-            map = jdbcTemplate.queryForMap(SQL_BLOB);
-            StringBuilder str = new StringBuilder();
-                byte[] blob = (byte[]) map.get("img_data");
-                for (int i = 0; i < blob.length; i++) {
-                    str.append(blob[i]);
-                }
-
-            System.out.println(str);
-            maw.addObject("dbpicture", blob);
-            maw.addObject("dbpic", "<img id='profileImage' src='data:image/png;base64, "+ str +"'>");
-
-        } catch (Exception e) {
-            System.out.println(e);
-            String SQL = "SELECT name, username, email " +
-                    "FROM user_data WHERE username='"+auth.getName()+"'";
-            map = jdbcTemplate.queryForMap(SQL);
-
-            Object name = map.get("name");
-            Object username = map.get("username");
-            Object email = map.get("email");
-
-            maw.addObject("dbname", name);
-            maw.addObject("dbusername", username);
-            maw.addObject("dbemail", email);
+    public String getUser(Principal principal, Model model) {
+        Map<String, Object> data = (Map<String, Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
+        RegistrationForm user = registrationRepository.findByPrincipal((String) data.get("id"));
+        if (user == null) {
+            //registrationRepository.register((String) data.get("id"), (String) data.get("name"), (String) data.get("locale"));
         }
-        return maw;
 
+        List<Object> list = registrationRepository.joinByPrincipal((String) data.get("id"));
+        System.out.println(list);
+        for (int i=0; i<list.size(); i++) {
+            System.out.println(i);
+        }
+
+        Optional<UploadForm> uploadForm = pictureRepository.findById((String) data.get("id"));
+        if (uploadForm.isPresent()) {
+            model.addAttribute("uploadForm", uploadForm.get()); //Pole vaja
+            byte[] array = uploadForm.get().getData();
+            String base64 = "data:" + uploadForm.get().getType() + ";base64, " + Base64Utils.encodeToString(array);
+            model.addAttribute("image", base64);
+            return "picture";
+        }
+        return "upload";
     }
 }

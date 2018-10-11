@@ -1,8 +1,7 @@
 package TronGame.Tron.Repositories;
 
 import TronGame.Tron.Entities.RegistrationForm;
-import TronGame.Tron.Entities.StatisticsForm;
-import TronGame.Tron.Entities.UploadForm;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -13,9 +12,13 @@ import java.util.List;
 @Repository
 public interface RegistrationRepository extends CrudRepository<RegistrationForm, Integer> {
 
-    @Query(value = "INSERT INTO users (id, firstname, lastname, email) VALUES (:#{#registrationForm.id}, :#{#registrationForm.firstname}, :#{#registrationForm.lastname}, :#{#registrationForm.email})", nativeQuery = true)
-    List<StatisticsForm> form();
+    @Modifying
+    @Query(value = "INSERT INTO users (id, name, locale) VALUES (:id, :name, :locale)", nativeQuery = true)
+    RegistrationForm register(@Param("id") String id, @Param("name") String name, @Param("locale") String locale);
 
-    @Query(value = "SELECT * FROM v_users WHERE email=(:email)", nativeQuery = true)
-    RegistrationForm findByEmail(@Param("email") String email);
+    @Query(value = "SELECT * FROM users JOIN profile ON users.id=profile.username WHERE users.id=(:id)", nativeQuery = true)
+    List<Object> joinByPrincipal(@Param("id") String id);
+
+    @Query(value = "SELECT * FROM users WHERE id=(:id)", nativeQuery = true)
+    RegistrationForm findByPrincipal(@Param("id") String id);
 }

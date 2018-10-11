@@ -7,30 +7,21 @@ import javax.persistence.*;
 public class RegistrationForm {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="id")
-    private Integer id;
+    private String id;
 
-    @Column(name="firstname")
-    private String firstname;
+    @Column(name="name")
+    private String name;
 
-    @Column(name="lastname")
-    private String lastname;
+    @Column(name="locale")
+    private String locale;
 
-    @Column(name="email")
-    private String email;
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getFirstname() { return firstname; }
-    public void setFirstname(String firstname) { this.firstname = firstname; }
-
-    public String getLastname() { return lastname; }
-    public void setLastname(String lastname) { this.lastname = lastname; }
-
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-
-
+    public String getLocale() { return locale; }
+    public void setLocale(String locale) { this.locale = locale; }
 }
