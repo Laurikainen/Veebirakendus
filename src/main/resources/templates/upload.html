@@ -4,8 +4,10 @@
 <body>
 <header th:include="fragments/navigation :: navigation"/>
 
+<p th:if="${picture_uploaded}" th:text="#{picture_uploaded}"></p>
 <p th:if="${picture_not_uploaded}" th:text="#{picture_not_uploaded}"></p>
 <p th:if="${picture_deleted}" th:text="#{picture_deleted}"></p>
+<p th:if="${picture_exists}" th:text="#{picture_exists}"></p>
 
 <form th:action="@{/upload}" th:object="${pictureForm}" enctype="multipart/form-data" method="post">
     <p><label for="data" th:text="#{picture}"></label></p>

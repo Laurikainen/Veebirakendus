@@ -1,5 +1,6 @@
 package TronGame.Tron.Controllers;
 
+import TronGame.Tron.Configurations.Statistics;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -7,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
     public class IndexController {
 
     @RequestMapping("/")
-    public String main_page(){
-        return "main_page";
-    }
+    public String main_page(){ return "main_page"; }
 
     @RequestMapping("/login")
     public String login(){ return "login"; }

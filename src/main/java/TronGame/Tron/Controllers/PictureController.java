@@ -32,18 +32,22 @@ public class PictureController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         MultipartFile data = pictureForm.getData();
         try {
-            UploadForm uploadForm = new UploadForm();
-            uploadForm.setUsername(auth.getName());
-            uploadForm.setData(data.getBytes());
-            uploadForm.setTitle(data.getOriginalFilename());
-            uploadForm.setType(data.getContentType());
-            pictureRepository.save(uploadForm);
-            ResponseEntity.ok().build();
-            model.addAttribute("picture_uploaded", true);
-            return "picture";
+            Optional<UploadForm> upload = pictureRepository.findById(auth.getName());
+            if (upload.isPresent()) {
+                model.addAttribute("picture_exists", true);
+            }
+            else {
+                UploadForm uploadForm = new UploadForm();
+                uploadForm.setUsername(auth.getName());
+                uploadForm.setData(data.getBytes());
+                uploadForm.setTitle(data.getOriginalFilename());
+                uploadForm.setType(data.getContentType());
+                pictureRepository.save(uploadForm);
+                ResponseEntity.ok().build();
+                model.addAttribute("picture_uploaded", true);
+            }
         }
         catch (Exception e) {
-            System.out.println(e);
             model.addAttribute("picture_not_uploaded", true);
         }
         return "upload";
@@ -57,7 +61,7 @@ public class PictureController {
             model.addAttribute("uploadForm", uploadForm.get());
             byte[] array = uploadForm.get().getData();
             String base64 = "data:" + uploadForm.get().getType() + ";base64, " + Base64Utils.encodeToString(array);
-            model.addAttribute("picture", base64);
+            model.addAttribute("image", base64);
             return "picture";
         }
         return "upload";

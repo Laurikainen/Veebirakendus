@@ -4,13 +4,11 @@
 <body>
 <header th:include="fragments/navigation :: navigation"/>
 
-    <p th:if="${picture_uploaded}" th:text="#{picture_uploaded}"></p>
-
     <h2 th:text="#{sql_picture} +' '+ ${uploadForm.title}"></h2>
     <h2 th:text="#{sql_type} +' '+ ${uploadForm.type}"></h2>
     <h2 th:text="#{sql_username} +' '+ ${uploadForm.username}"></h2>
     <h2 th:text="#{sql_data}"></h2>
-    <img th:src="${picture}">
+    <img th:src="${image}">
     <a th:href="@{/delete}"><input type="submit" th:value="#{delete}"/></input></a>
 
 
