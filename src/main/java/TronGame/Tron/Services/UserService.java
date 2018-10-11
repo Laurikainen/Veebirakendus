@@ -16,11 +16,11 @@ public class UserService {
     private RegistrationRepository registrationRepository;
 
     public RegistrationForm newUser(Principal principal) {
-        Map<String, Object> details = (Map<String, Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
+        Map<String, Object> data = (Map<String, Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
 
-        String firstName = (String) details.get("given_name");
-        String lastName = (String) details.get("family_name");
-        String email = (String) details.get("email");
+        String firstName = (String) data.get("given_name");
+        String lastName = (String) data.get("family_name");
+        String email = (String) data.get("email");
 
         RegistrationForm user = registrationRepository.findByEmail(email);
 
@@ -33,5 +33,20 @@ public class UserService {
         }
 
         return user;
+    }
+
+    public RegistrationForm getUser(Principal principal) {
+        if(principal == null) {
+            return null;
+        }
+        Map<String, Object> data = (Map<String, Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
+
+        RegistrationForm registrationForm = registrationRepository.findByEmail((String)data.get("email"));
+
+        if(registrationForm == null) {
+            return newUser(principal);
+        }
+
+        return registrationForm;
     }
 }
