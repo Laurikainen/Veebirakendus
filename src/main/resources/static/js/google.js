@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html th:lang="#{language_code}" xmlns:th="http://www.thymeleaf.org">
-<head th:include="fragments/head :: head">
-</head>
-<body>
-<header th:include="fragments/navigation :: navigation"/>
-<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" id="loginGoogle"></div>
-<head>
-    <meta name="google-signin-scope" content="profile email">
-    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-</head>
-<body>
-<script>
-      function onSignIn(googleUser) {
+function onSignIn(googleUser) {
         // Useful data for your client-side scripts:
         var profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -26,8 +12,3 @@
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
       };
-    </script>
-</body>
-
-</body>
-</html>

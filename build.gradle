@@ -51,5 +51,6 @@ dependencies {
     compile('com.google.guava:guava:24.1.1-jre')
 
     compile('eu.bitwalker:UserAgentUtils:1.21')
+    compile('javax.mail:mail:1.5.0-b01')
 }
 

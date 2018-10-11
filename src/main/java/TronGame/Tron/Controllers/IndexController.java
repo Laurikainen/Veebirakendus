@@ -1,6 +1,7 @@
 package TronGame.Tron.Controllers;
 
 import TronGame.Tron.Entities.StatisticsForm;
+import TronGame.Tron.Repositories.RegistrationRepository;
 import TronGame.Tron.Repositories.StatisticsRepository;
 import eu.bitwalker.useragentutils.Browser;
 import eu.bitwalker.useragentutils.OperatingSystem;
@@ -17,6 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 
     @Autowired
     private StatisticsRepository statisticsRepository;
+
+    @Autowired
+    private RegistrationRepository registrationRepository;
 
     @RequestMapping("/")
     public String main_page(HttpServletRequest request){
@@ -36,7 +40,10 @@ import javax.servlet.http.HttpServletRequest;
     }
 
     @RequestMapping("/login")
-    public String login(){ return "login"; }
+    public String login(){
+        registrationRepository.form();
+        return "login";
+    }
 
     @RequestMapping("/forum")
     public String forum(){ return "forum"; }
