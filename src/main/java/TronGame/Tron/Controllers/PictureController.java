@@ -9,7 +9,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,20 +47,6 @@ public class PictureController {
         }
         catch (Exception e) {
             model.addAttribute("picture_not_uploaded", true);
-        }
-        return "upload";
-    }
-
-    @RequestMapping(value = "/picture", method = RequestMethod.GET)
-    public String getPicture(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Optional<UploadForm> uploadForm = pictureRepository.findById(auth.getName());
-        if (uploadForm.isPresent()) {
-            model.addAttribute("uploadForm", uploadForm.get());
-            byte[] array = uploadForm.get().getData();
-            String base64 = "data:" + uploadForm.get().getType() + ";base64, " + Base64Utils.encodeToString(array);
-            model.addAttribute("image", base64);
-            return "picture";
         }
         return "upload";
     }
