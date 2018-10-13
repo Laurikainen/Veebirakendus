@@ -61,8 +61,8 @@ import java.util.Map;
     @RequestMapping("/privacy_policy")
     public String privacy_policy(){ return "privacy_policy"; }
 
-    @RequestMapping("/developers")
-    public String map(){ return "map"; }
+    @RequestMapping("/about_us")
+    public String about_us(){ return "map"; }
 
     @RequestMapping("/statistics")
     public String statistics(Model model){
