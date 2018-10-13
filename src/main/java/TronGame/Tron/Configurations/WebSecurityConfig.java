@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // Starts authorizing configurations.
                 .authorizeRequests()
                 // Ignore the "/" and "/index.html"
-                .antMatchers("/", "/play_game", "/registration", "/static/css/stiil.css").permitAll()
+                .antMatchers("/", "/play_game", "/registration", "/static/css/stiil.css","/privacy_policy").permitAll()
                 // Authenticate all remaining URLs.
                 .anyRequest().fullyAuthenticated()
                 .and()

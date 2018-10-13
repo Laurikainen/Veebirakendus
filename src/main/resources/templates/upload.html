@@ -4,6 +4,8 @@
 <body>
 <header th:include="fragments/navigation :: navigation"/>
 
+<h1 th:text="#{upload}"></h1>
+
 <p th:if="${picture_uploaded}" th:text="#{picture_uploaded}"></p>
 <p th:if="${picture_not_uploaded}" th:text="#{picture_not_uploaded}"></p>
 <p th:if="${picture_deleted}" th:text="#{picture_deleted}"></p>

@@ -3,6 +3,9 @@
 <head th:lang="#{language_code}" th:include="fragments/head :: head"/>
 <body>
 <header th:include="fragments/navigation :: navigation"/>
+
+<h1 th:text="#{user}"></h1>
+
 <p th:text="#{sql_name}"></p>
 <p th:text="${name}"></p>
 
