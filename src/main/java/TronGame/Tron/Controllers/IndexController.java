@@ -46,17 +46,8 @@ import java.util.Map;
         return "main_page";
     }
 
-
     @RequestMapping("/login")
-    public String login(HttpServletRequest request) {
-        String referer = request.getHeader("Referer");
-        System.out.println(referer);
-        if(referer != null) {
-            request.getSession().setAttribute("url_login_redirect", referer);
-        }
-        return "redirect:login/google";
-    }
-
+    public String login(){ return "login"; }
 
     @RequestMapping("/forum")
     public String forum(){ return "forum"; }
