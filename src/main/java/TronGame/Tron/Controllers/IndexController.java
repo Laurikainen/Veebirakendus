@@ -8,18 +8,37 @@ import eu.bitwalker.useragentutils.Browser;
 import eu.bitwalker.useragentutils.OperatingSystem;
 import eu.bitwalker.useragentutils.UserAgent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.Map;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 @Controller
+@EnableScheduling
     public class IndexController {
+    private double manifestID = Math.random();
+
+    //This checks for an update every 5 minutes for the cache
+    @Scheduled(fixedDelay=300000)
+    public void NewManifestID() {
+        manifestID = Math.random();
+    }
 
     @Autowired
     private StatisticsRepository statisticsRepository;
@@ -75,6 +94,33 @@ import java.util.Map;
         return "statistics";
     }
 
+
+    @RequestMapping(value = "offline.appcache", method = RequestMethod.GET, produces = "text/cache-manifest")
+    @ResponseStatus(HttpStatus.OK)
+    @ResponseBody
+    public String manifest() {return "CACHE MANIFEST\n" +
+            "#v1 - 16.10.2018\n" +
+            "#Randomly generated manifest ID: " + Double.toString(manifestID).substring(2) + "\n" +
+            "/\n" +
+            "static/css/stiil.css\n" +
+            "/privacy_policy\n" +
+            "/play_game\n" +
+            "static/js/map.js\n" +
+            "/about_us\n" +
+            "\n" +
+            "NETWORK:\n" +
+            "*";}
+
+
+
     @RequestMapping("/googlee5541141b" + "a3fb51d.html")
     public String googlee5541141ba3fb51d(){ return "googlee5541141ba3fb51d.html"; }
+
+
+//    @RequestMapping(value="/offline.appcache", produces="text/cache-manifest")
+//    public String offline(){ return "offline.appcache"; }
+
+
+
+
 }
