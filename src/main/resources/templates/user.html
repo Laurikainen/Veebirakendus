@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:lang="#{language_code}" th:include="fragments/head :: head"/>
+<head>
+    <title th:text="#{tron_user}"></title>
+    <th:block th:include="fragments/head"/>
+</head>
 <body>
 <header th:include="fragments/navigation :: navigation"/>
 
