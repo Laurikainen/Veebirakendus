@@ -3,7 +3,7 @@ package TronGame.Tron.Entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name="profile")
+    @Table(name="profile")
 public class UploadForm {
 
     @Id
