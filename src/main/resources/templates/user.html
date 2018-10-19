@@ -25,5 +25,18 @@
 <img th:src="${image}">
 <a th:href="@{/delete}"><input type="submit" th:value="#{delete}"/></input></a>
 
+
+<script src="/static/js/jquery-1.7.1.js"></script>
+<script src="/static/js/offline.js"></script>
+<script>
+		$( function() {
+			if ( !offliner.isOffline ) {
+				offliner.cacheCurrentPage();
+				offliner.addCachingIframe();
+			}
+
+		});
+</script>
+
 </body>
 </html>

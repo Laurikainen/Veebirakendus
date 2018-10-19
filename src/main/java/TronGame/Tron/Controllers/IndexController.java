@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.persistence.Column;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
 import java.util.Map;
@@ -83,6 +86,9 @@ import java.util.concurrent.TimeUnit;
     @RequestMapping("/about_us")
     public String about_us(){ return "map"; }
 
+    @RequestMapping("/userFallback")
+    public String user_fallback(){ return "userFallback"; }
+
     @RequestMapping("/statistics")
     public String statistics(Model model){
         model.addAttribute("browsers", statisticsRepository.browsers());
@@ -95,30 +101,66 @@ import java.util.concurrent.TimeUnit;
     }
 
 
+
     @RequestMapping(value = "offline.appcache", method = RequestMethod.GET, produces = "text/cache-manifest")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
-    public String manifest() {return "CACHE MANIFEST\n" +
-            "#v1 - 16.10.2018\n" +
-            "#Randomly generated manifest ID: " + Double.toString(manifestID).substring(2) + "\n" +
-            "/\n" +
-            "static/css/stiil.css\n" +
-            "/privacy_policy\n" +
-            "/play_game\n" +
-            "static/js/map.js\n" +
-            "/about_us\n" +
-            "\n" +
-            "NETWORK:\n" +
-            "*";}
+    public String manifestUnlogged() {
+        String text = "";
 
 
+        if (SecurityContextHolder.getContext().getAuthentication() != null &&
+            SecurityContextHolder.getContext().getAuthentication().isAuthenticated() &&
+            //when Anonymous Authentication is enabled
+            !(SecurityContextHolder.getContext().getAuthentication()
+                    instanceof AnonymousAuthenticationToken)) {
+            text =  "CACHE MANIFEST\n" +
+                    "#v3 - 19.10.2018 (logged in)\n" +
+                    "#Randomly generated manifest ID: " + Double.toString(manifestID).substring(2) + "\n" +
+                    //"/\n" +
+                    "static/css/stiil.css\n" +
+                    //"/privacy_policy\n" +
+                    //"/play_game\n" +
+                    "/userFallback\n" +
+                    "static/js/map.js\n" +
+                    "static/js/jquery-1.7.1.js\n" +
+                    "static/js/offline.js\n" +
+                    //"/about_us\n" +
+                    //"/upload\n" +
+                    "\n" +
+                    "FALLBACK:\n" +
+                    "/ userFallback\n" +
+                    "\n" +
+                    "NETWORK:\n" +
+                    "*";
+    }
+    else {
+        text = "CACHE MANIFEST\n" +
+                "#v3 - 19.10.2018 (logged out)\n" +
+                "#Randomly generated manifest ID: " + Double.toString(manifestID).substring(2) + "\n" +
+                //"/\n" +
+                "static/css/stiil.css\n" +
+                //"/privacy_policy\n" +
+                //"/play_game\n" +
+                "/userFallback\n" +
+                "static/js/map.js\n" +
+                "static/js/offline.js\n" +
+                "static/js/jquery-1.7.1.js\n" +
+                //"/about_us\n" +
+                "\n" +
+                "FALLBACK:\n" +
+                "/ /userFallback\n" +
+                "\n" +
+                "NETWORK:\n" +
+                "*";
+    }
+
+    return text;
+    }
 
     @RequestMapping("/googlee5541141b" + "a3fb51d.html")
     public String googlee5541141ba3fb51d(){ return "googlee5541141ba3fb51d.html"; }
 
-
-//    @RequestMapping(value="/offline.appcache", produces="text/cache-manifest")
-//    public String offline(){ return "offline.appcache"; }
 
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" manifest="/offline.appcache">
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:lang="#{language_code}">
     <link rel="stylesheet" type="text/css" href="/static/css/stiil.css"/>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsOG10fC3idGbjmF9turyt2JVam0We8aE&callback=myMap"></script>
@@ -16,5 +16,19 @@
 <div id="map" style="width:400px;height:400px"></div>
 <p></p>
 
+
+
+
+<script src="/static/js/jquery-1.7.1.js"></script>
+<script src="/static/js/offline.js"></script>
+<script>
+		$( function() {
+			if ( !offliner.isOffline ) {
+				offliner.cacheCurrentPage();
+				offliner.addCachingIframe();
+			}
+
+		});
+</script>
 </body>
 </html>

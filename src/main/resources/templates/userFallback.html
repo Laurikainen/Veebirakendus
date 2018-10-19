@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  manifest="/offline.appcache">
+<head th:lang="#{language_code}" th:include="fragments/head :: head"/>
+<body>
+<header th:include="fragments/navigation :: navigation"/>
+
+
+
+<script src="/static/js/jquery-1.7.1.js"></script>
+<script src="/static/js/offline.js"></script>
+<script>
+		offliner.isOffline = true;
+		// We only want to render the page if we're not in the hidden iframe
+		if ( location.hash != '#iframed' ) {
+			offliner.renderCurrentPage();
+		}
+</script>
+
+</body>
+</html>

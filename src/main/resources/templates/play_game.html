@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html th:lang="#{language_code}" xmlns:th="http://www.thymeleaf.org" manifest="/offline.appcache">
+<html th:lang="#{language_code}" xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/head :: head"/>
 <body>
 <header th:include="fragments/navigation :: navigation"/>
 
 <h1 th:text="#{play_game}"></h1>
 
+
+
+<script src="/static/js/jquery-1.7.1.js"></script>
+<script src="/static/js/offline.js"></script>
+<script>
+		$( function() {
+			if ( !offliner.isOffline ) {
+				offliner.cacheCurrentPage();
+				offliner.addCachingIframe();
+			}
+
+		});
+</script>
 </body>
 </html>

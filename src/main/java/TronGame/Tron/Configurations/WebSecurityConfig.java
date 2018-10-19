@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // Starts authorizing configurations.
                 .authorizeRequests()
                 // Ignore the "/" and "/index.html"
-                .antMatchers("/", "/play_game", "/about_us", "/static/css/stiil.css","/privacy_policy", "/offline.appcache", "/static/js/map.js").permitAll()
+                .antMatchers("/", "/play_game", "/about_us", "/userFallback", "/static/css/stiil.css","/privacy_policy", "/offline.appcache", "/static/js/map.js", "/static/js/offline.js", "/static/js/jquery-1.7.1.js").permitAll()
                 // Authenticate all remaining URLs.
                 .anyRequest().fullyAuthenticated()
                 .and()
@@ -72,6 +72,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterAt(filter(), BasicAuthenticationFilter.class)
                 .csrf()
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+
+        http.headers()
+                .frameOptions()
+                .sameOrigin();
     }
 
     /*This method for creating filter for OAuth authentication.*/
