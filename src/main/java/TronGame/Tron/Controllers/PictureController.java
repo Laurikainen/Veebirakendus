@@ -52,6 +52,8 @@ public class PictureController {
         return "upload";
     }
 
+
+
     @RequestMapping(value = "/delete")
     public String deletePicture(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

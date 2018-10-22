@@ -50,6 +50,9 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-jdbc')
     compile('com.google.guava:guava:24.1.1-jre')
 
+// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.0.6.RELEASE'
+
     compile('eu.bitwalker:UserAgentUtils:1.21')
     compile('javax.mail:mail:1.5.0-b01')
 }
