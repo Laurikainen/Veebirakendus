@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"  manifest="/offline.appcache">
-<head th:lang="#{language_code}" th:include="fragments/head :: head"/>
+<html th:lang="#{language_code}" xmlns:th="http://www.thymeleaf.org"  manifest="/offline.appcache">
+<head>
+    <title th:text="#{tron_fall}"></title>
+    <th:block th:include="fragments/head"/>
+</head>
 <body>
+
 <header th:include="fragments/navigation :: navigation"/>
 
 

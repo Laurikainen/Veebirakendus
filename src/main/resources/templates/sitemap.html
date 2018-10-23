@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html th:lang="#{language_code}" xmlns:th="http://www.thymeleaf.org"  manifest="/offline.appcache">
+<head>
+    <title th:text="#{tron_sitemap}"></title>
+    <th:block th:include="fragments/head"/>
+</head>
+<body>
+<header th:include="fragments/navigation :: navigation"/>
+
+<h1 th:text="#{sitemap}"></h1>
+
+<table>
+    <tr>
+        <th th:text="#{functions}"></th>
+        <th th:text="#{info}"></th>
+    </tr>
+    <tr>
+        <td><a th:href="@{/login}" th:text="#{login}"></a></td>
+        <td><a th:href="@{/sitemap}" th:text="#{sitemap}"></a></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/}" th:text="#{homepage}"></a></td>
+        <td><a th:href="@{/statistics}" th:text="#{statistics}"></a></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/about_us}" th:text="#{about_us}"></a></td>
+        <td><a th:href="@{/privacy_policy}" th:text="#{privacy_policy}"></a></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/play_game}" th:text="#{play_game}"></a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td ><a th:href="@{/user}" th:text="#{user}"></a></td>
+        <td ></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/upload}" th:text="#{upload}"></a></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/forum}" th:text="#{forum}"></a></td>
+        <td ></td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/new_post}" th:text="#{new_post}"></a></td>
+        <td ></td>
+    </tr>
+</table>
+
+<script src="/static/js/jquery-1.7.1.js"></script>
+<script src="/static/js/offline.js"></script>
+<script>
+		$( function() {
+			if ( !offliner.isOffline ) {
+				offliner.cacheCurrentPage();
+				offliner.addCachingIframe();
+			}
+
+		});
+</script>
+</body>
+</html>

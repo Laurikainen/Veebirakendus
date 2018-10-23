@@ -1,6 +1,5 @@
 package TronGame.Tron.Controllers;
 
-import TronGame.Tron.Entities.RegistrationForm;
 import TronGame.Tron.Entities.StatisticsForm;
 import TronGame.Tron.Repositories.RegistrationRepository;
 import TronGame.Tron.Repositories.StatisticsRepository;
@@ -9,28 +8,17 @@ import eu.bitwalker.useragentutils.OperatingSystem;
 import eu.bitwalker.useragentutils.UserAgent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
-import javax.persistence.Column;
 import javax.servlet.http.HttpServletRequest;
-import java.security.Principal;
-import java.util.Map;
-import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 @Controller
 @EnableScheduling
@@ -85,6 +73,9 @@ import java.util.concurrent.TimeUnit;
 
     @RequestMapping("/about_us")
     public String about_us(){ return "map"; }
+
+    @RequestMapping("/sitemap")
+    public String sitemap(){ return "sitemap"; }
 
     @RequestMapping("/userFallback")
     public String user_fallback(){ return "userFallback"; }
