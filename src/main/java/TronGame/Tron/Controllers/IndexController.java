@@ -91,8 +91,6 @@ import javax.servlet.http.HttpServletRequest;
         return "statistics";
     }
 
-
-
     @RequestMapping(value = "offline.appcache", method = RequestMethod.GET, produces = "text/cache-manifest")
     @ResponseStatus(HttpStatus.OK)
     @ResponseBody
