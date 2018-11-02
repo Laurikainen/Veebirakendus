@@ -1,5 +1,6 @@
 package TronGame.Tron.Controllers;
 
+import TronGame.Tron.Entities.SendEmail;
 import TronGame.Tron.Entities.StatisticsForm;
 import TronGame.Tron.Repositories.RegistrationRepository;
 import TronGame.Tron.Repositories.StatisticsRepository;
@@ -52,7 +53,6 @@ import javax.servlet.http.HttpServletRequest;
         statisticsForm.setUser_id(id);
 
         statisticsRepository.save(statisticsForm);
-
         return "main_page";
     }
 
@@ -60,7 +60,10 @@ import javax.servlet.http.HttpServletRequest;
     public String login(){ return "login"; }
 
     @RequestMapping("/forum")
-    public String forum(){ return "forum"; }
+    public String forum(){
+        new SendEmail().sendEmail("");
+        return "forum";
+    }
 
     @RequestMapping("/play_game")
     public String play_game(){ return "play_game"; }
@@ -90,8 +93,6 @@ import javax.servlet.http.HttpServletRequest;
         model.addAttribute("id_count", statisticsRepository.id_count());
         return "statistics";
     }
-
-
 
     @RequestMapping(value = "offline.appcache", method = RequestMethod.GET, produces = "text/cache-manifest")
     @ResponseStatus(HttpStatus.OK)
