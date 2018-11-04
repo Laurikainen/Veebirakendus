@@ -53,7 +53,7 @@ return{
     //Then the program will continuously check whether UpdateController also thinks it's still the same.
     updateId: function(lang){
             var requestData = {
-            'Id' : updateId,
+            "Id" : updateId
             };
             requestData[_csrf_param_name] = _csrf_token; // Adds the token
 
