@@ -2,10 +2,17 @@
 <html th:lang="#{language_code}" xmlns:th="http://www.thymeleaf.org"  manifest="/offline.appcache">
 <head>
 
-    <script src="/static/js/jquery-1.7.1.js"></script>
-    <script src="/static/js/offline.js"></script>
-    <script src="/static/js/update.js"></script>
-    <script th:inline="javascript">
+    <title th:text="#{tron_fall}"></title>
+    <th:block th:include="fragments/head"/>
+</head>
+<body>
+<header th:include="fragments/navigation :: navigation"/>
+
+
+<script src="/static/js/jquery-1.7.1.js"></script>
+<script src="/static/js/offline.js"></script>
+<script src="/static/js/update.js"></script>
+<script th:inline="javascript">
     //This gets the csrf tokens and language code from the website
         /*<![CDATA[*/
         var _csrf_token = /*[[${_csrf.token}]]*/ '';
@@ -13,7 +20,7 @@
         var lang_code = [[#{language_code}]];
         /*]]>*/
     </script>
-    <script th:inline="javascript">
+<script th:inline="javascript">
     //This caches the page for offline use
 		offliner.isOffline = true;
 		// We only want to render the page if we're not in the hidden iframe
@@ -27,10 +34,5 @@
 		    //alert(update.askUpdate());
 		});
     </script>
-    <title th:text="#{tron_fall}"></title>
-    <th:block th:include="fragments/head"/>
-</head>
-<body>
-<header th:include="fragments/navigation :: navigation"/>
 </body>
 </html>
