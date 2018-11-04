@@ -1,12 +1,14 @@
 package TronGame.Tron.Controllers;
 
 import TronGame.Tron.Entities.PictureForm;
+import TronGame.Tron.Entities.SendEmail;
 import TronGame.Tron.Entities.UploadForm;
 import TronGame.Tron.Repositories.PictureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.naming.SizeLimitExceededException;
+import java.security.Principal;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -27,7 +31,10 @@ public class PictureController {
     public String getPictureForm() { return "upload"; }
 
     @RequestMapping(value = "/upload", method = RequestMethod.POST)
-    public String addPictureForm(@ModelAttribute(name="pictureForm") PictureForm pictureForm, Model model){
+    public String addPictureForm(@ModelAttribute(name="pictureForm") PictureForm pictureForm, Model model, Principal principal){
+        Map<String, Object> get_email = (Map<String, Object>) ((OAuth2Authentication) principal).getUserAuthentication().getDetails();
+        String email = (String) get_email.get("email");
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         MultipartFile data = pictureForm.getData();
         try {
@@ -44,6 +51,7 @@ public class PictureController {
                 pictureRepository.save(uploadForm);
                 ResponseEntity.ok().build();
                 model.addAttribute("picture_uploaded", true);
+                new SendEmail().sendEmail(email);
             }
         }
         catch (Exception e) {
@@ -51,6 +59,8 @@ public class PictureController {
         }
         return "upload";
     }
+
+
 
     @RequestMapping(value = "/delete")
     public String deletePicture(Model model) {

@@ -1,5 +1,6 @@
 package TronGame.Tron.Configurations;
 
+import TronGame.Tron.Entities.SendEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
@@ -21,9 +22,11 @@ import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 @EnableWebSecurity
 @EnableOAuth2Sso
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     private OAuth2ClientContext oauth2ClientContext;
     private AuthorizationCodeResourceDetails authorizationCodeResourceDetails;
     private ResourceServerProperties resourceServerProperties;
+
     @Autowired
     public void setOauth2ClientContext(OAuth2ClientContext oauth2ClientContext) {
         this.oauth2ClientContext = oauth2ClientContext;
@@ -58,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 // Starts authorizing configurations.
                 .authorizeRequests()
                 // Ignore the "/" and "/index.html"
-                .antMatchers("/", "/play_game", "/registration", "/static/css/stiil.css","/privacy_policy").permitAll()
+                .antMatchers("/", "/play_game", "/updateId", "/about_us", "/userFallback", "/sitemap", "/static/css/stiil.css","/privacy_policy", "/offline.appcache", "/static/js/map.js", "/static/js/offline.js", "/static/js/update.js", "/static/js/jquery-1.7.1.js").permitAll()
                 // Authenticate all remaining URLs.
                 .anyRequest().fullyAuthenticated()
                 .and()
@@ -72,6 +75,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .addFilterAt(filter(), BasicAuthenticationFilter.class)
                 .csrf()
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+
+        http.headers()
+                .frameOptions()
+                .sameOrigin();
     }
 
     /*This method for creating filter for OAuth authentication.*/
@@ -88,6 +95,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // user details from the OAuth Service.
         oAuth2Filter.setTokenServices(new UserInfoTokenServices(resourceServerProperties.getUserInfoUri(),
                 resourceServerProperties.getClientId()));
+
         return oAuth2Filter;
     }
 }
