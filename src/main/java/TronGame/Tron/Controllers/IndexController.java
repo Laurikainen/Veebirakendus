@@ -68,7 +68,6 @@ import java.io.IOException;
 
     @RequestMapping("/forum")
     public String forum(){
-        new SendEmail().sendEmail("");
         return "forum";
     }
 
