@@ -3,7 +3,6 @@
 <head>
 
     <script src="/static/js/jquery-1.7.1.js"></script>
-    <script src="/static/js/offline.js"></script>
     <script src="/static/js/update.js"></script>
     <script th:inline="javascript">
     //This gets the csrf tokens and language code from the website
@@ -14,15 +13,6 @@
         /*]]>*/
     </script>
     <script th:inline="javascript">
-    //This caches the page for offline use
-		$( function() {
-			if ( !offliner.isOffline ) {
-				offliner.cacheCurrentPage();
-				offliner.addCachingIframe();
-			}
-
-		});
-
 	//This executes a long-poll that continuously checks for updates on the server
 		$( function() {
 		    update.updateId(lang_code);
@@ -93,5 +83,17 @@
 
 <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us.</p>
 
+
+<script src="/static/js/offline.js"></script>
+<script>
+    //This caches the page for offline use
+		$( function() {
+			if ( !offliner.isOffline ) {
+				offliner.cacheCurrentPage();
+				offliner.addCachingIframe();
+			}
+
+		});
+</script>
 
 </body></html>
