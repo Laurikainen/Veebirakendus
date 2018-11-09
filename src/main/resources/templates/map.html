@@ -9,13 +9,13 @@
         /*<![CDATA[*/
         var _csrf_token = /*[[${_csrf.token}]]*/ '';
         var _csrf_param_name = /*[[${_csrf.parameterName}]]*/ '';
-        var lang_code = [[#{language_code}]];
+        var updateMessage = [[#{update}]];
         /*]]>*/
     </script>
     <script th:inline="javascript">
 	//This executes a long-poll that continuously checks for updates on the server
 		$( function() {
-		    update.updateId(lang_code);
+		    update.updateId(updateMessage);
 		    //alert(update.askUpdate());
 		});
     </script>

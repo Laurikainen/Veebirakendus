@@ -4,7 +4,7 @@ var update = (function() {
     var pollingController = (function() {
         return{
             //This requests data from the server until it gets an update. If it does, it alerts the user.
-             startLongPolling: function(lang) {
+             startLongPolling: function(message) {
 
                         var requestData = {
                         "Id" : updateId
@@ -20,13 +20,14 @@ var update = (function() {
                             dataType: "html",
                             success: function(response) {
                                 //alert("Success! response: " + response)
-                                if(lang == 'et'){
-                                    alert("Veebilehte on uuendatud! "); // + updateId + "!=" + response);
-                                }
-                                else{
-                                    alert("The website has been updated! "); // + updateId + "!=" + response);
-                                    //alert(lang)
-                                }
+                                alert(message);
+//                                if(lang == 'et'){
+//                                    alert("Veebilehte on uuendatud! "); // + updateId + "!=" + response);
+//                                }
+//                                else{
+//                                    alert("The website has been updated! "); // + updateId + "!=" + response);
+//                                    //alert(lang)
+//                                }
 
                                 updateId = response;
                                 //if(response != null && response !="" && response !="null")
@@ -34,7 +35,7 @@ var update = (function() {
                             },
                             error: function(e) {
                                 //console.log(e);
-                                pollingController.startLongPolling(lang);
+                                pollingController.startLongPolling(message);
                                 //alert('Error: ' + e);
                             },
 
@@ -51,7 +52,7 @@ return{
 
     //This requests the UpdateID from UpdateController and sets it in the script.
     //Then the program will continuously check whether UpdateController also thinks it's still the same.
-    updateId: function(lang){
+    updateId: function(message){
             var requestData = {
             "Id" : updateId
             };
@@ -71,14 +72,14 @@ return{
                     //alert("updated id: " + updateId);
 
 
-                    pollingController.startLongPolling(lang);
+                    pollingController.startLongPolling(message);
 		            //update.askUpdate();
 
                     //if(response != null && response !="" && response !="null")
                     //    $("#success").html(response);
                 },
                 error: function(e) {
-                    pollingController.startLongPolling(lang);
+                    pollingController.startLongPolling(message);
                     console.log(e);
                 },
 
