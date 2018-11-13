@@ -27,7 +27,7 @@
 <body>
 <header th:include="fragments/navigation :: navigation"/>
 
-<h1 text="Sudoku"></h1>
+<h1 th:text="#{sudoku}"></h1>
 
 <p th:if="${incorrect}" th:text="#{incorrect}"></p>
 <p th:if="${correct}" th:text="#{correct}"></p>
