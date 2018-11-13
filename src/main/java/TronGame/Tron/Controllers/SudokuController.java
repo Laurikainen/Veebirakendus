@@ -20,7 +20,7 @@ public class SudokuController {
         9,6,1,5,3,7,2,8,4,2,8,7,4,1,9,6,3,5,3,4,5,2,8,6,1,7,9};
         Integer i = 0;
         for(String element : sudoku) {
-            if (!kontrollitav[0].toString().equals(element)) {
+            if (!kontrollitav[i].toString().equals(element)) {
                 model.addAttribute("incorrect", true);
                 return "play_game";
             }
