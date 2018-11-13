@@ -37,3 +37,19 @@ li a:hover {
     margin: 8px 0;
 }
 
+#ylesse1, #ylesse2, #ylesse3, #ylesse4, #ylesse5, #ylesse6, #ylesse7, #ylesse8, #ylesse9 { border-top: 2px solid #000000; }
+#alla1, #alla2, #alla3, #alla4, #alla5, #alla6, #alla7, #alla8, #alla9 { border-bottom: 2px solid #000000; }
+#paremale1, #paremale2, #paremale3, #paremale4, #paremale5, #paremale6, #paremale7, #paremale8, #paremale9
+{ border-right: 2px solid #000000; }
+#vasakule1, #vasakule2, #vasakule3, #vasakule4, #vasakule5, #vasakule6, #vasakule7, #vasakule8, #vasakule9
+{ border-left: 2px solid #000000; }
+#ylessevasakule1, #ylessevasakule2, #ylessevasakule3, #ylessevasakule4, #ylessevasakule5, #ylessevasakule6,
+#ylessevasakule7, #ylessevasakule8, #ylessevasakule9 { border-top: 2px solid #000000; border-left: 2px solid #000000; }
+#ylesseparemale1, #ylesseparemale2, #ylesseparemale3, #ylesseparemale4, #ylesseparemale5, #ylesseparemale6,
+#ylesseparemale7, #ylesseparemale8, #ylesseparemale9{ border-top: 2px solid #000000; border-right: 2px solid #000000; }
+#allavasakule1, #allavasakule2, #allavasakule3, #allavasakule4, #allavasakule5, #allavasakule6, #allavasakule7,
+#allavasakule8, #allavasakule9 { border-bottom: 2px solid #000000; border-left: 2px solid #000000; }
+#allaparemale1, #allaparemale2, #allaparemale3, #allaparemale4, #allaparemale5, #allaparemale6, #allaparemale7,
+#allaparemale8, #allaparemale9 { border-bottom: 2px solid #000000; border-right: 2px solid #000000; }
+
+

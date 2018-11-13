@@ -71,9 +71,6 @@ import java.io.IOException;
         return "forum";
     }
 
-    @RequestMapping("/play_game")
-    public String play_game(){ return "play_game"; }
-
     @RequestMapping("/new_post")
     public String new_post(){ return "new_post"; }
 

@@ -29,6 +29,141 @@
 
 <h1 th:text="#{play_game}"></h1>
 
+<p th:if="${incorrect}" th:text="#{incorrect}"></p>
+<p th:if="${correct}" th:text="#{correct}"></p>
+
+<form th:action="@{/play_game}" method="post">
+    <table>
+        <tr>
+            <td id="ylessevasakule1"><input type="text" size="1" name="sudoku" value="5" required/></td>
+            <td id="ylesse1"><input type="text" size="1" name="sudoku" value="3" required/></td>
+            <td id="ylesseparemale1"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="ylessevasakule2"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="ylesse2"><input type="text" size="1" name="sudoku" value="7" required/></td>
+            <td id="ylesseparemale2"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="ylessevasakule3"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="ylesse3"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="ylesseparemale3"><input type="text" size="1" name="sudoku" required/></td>
+        </tr>
+
+        <tr>
+            <td id="vasakule1"><input type="text" size="1" name="sudoku" value="6" required/></td>
+            <td><input type="text" size="1" name="sudoku" required/></td>
+            <td id="paremale1"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="vasakule2"><input type="text" size="1" name="sudoku" value="1" required/></td>
+            <td><input type="text" size="1" name="sudoku" value="9" required/></td>
+            <td id="paremale2"><input type="text" size="1" name="sudoku" value="5" required/></td>
+
+            <td id="vasakule3"><input type="text" size="1" name="sudoku" required/></td>
+            <td><input type="text" size="1" name="sudoku" required/></td>
+            <td id="paremale3"><input type="text" size="1" name="sudoku" required/></td>
+        </tr>
+
+        <tr>
+            <td id="allavasakule1"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="alla1"><input type="text" size="1" name="sudoku" value="9" required/></td>
+            <td id="allaparemale1"><input type="text" size="1" name="sudoku" value="8" required/></td>
+
+            <td id="allavasakule2"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="alla2"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="allaparemale2"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="allavasakule3"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="alla3"><input type="text" size="1" name="sudoku" value="6" required/></td>
+            <td id="allaparemale3"><input type="text" size="1" name="sudoku" required/></td>
+        </tr>
+
+        <tr>
+            <td id="ylessevasakule4"><input type="text" size="1" name="sudoku" value="8" required/></td>
+            <td id="ylesse7"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="ylesseparemale4"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="ylessevasakule5"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="ylesse8"><input type="text" size="1" name="sudoku" value="6" required/></td>
+            <td id="ylesseparemale5"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="ylessevasakule6"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="ylesse9"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="ylesseparemale6"><input type="text" size="1" name="sudoku" value="3" required/></td>
+        </tr>
+
+        <tr>
+            <td id="vasakule4"><input type="text" size="1" name="sudoku" value="4" required/></td>
+            <td><input type="text" size="1" name="sudoku" required/></td>
+            <td id="paremale4"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="vasakule5"><input type="text" size="1" name="sudoku" value="8" required/></td>
+            <td><input type="text" size="1" name="sudoku" required/></td>
+            <td id="paremale5"><input type="text" size="1" name="sudoku" value="3" required/></td>
+
+            <td id="vasakule6"><input type="text" size="1" name="sudoku" required/></td>
+            <td><input type="text" size="1" name="sudoku" required/></td>
+            <td id="paremale6"><input type="text" size="1" name="sudoku" value="1" required/></td>
+        </tr>
+
+        <tr>
+            <td id="allavasakule4"><input type="text" size="1" name="sudoku" value="7" required/></td>
+            <td id="alla4"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="allaparemale4"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="allavasakule5"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="alla5"><input type="text" size="1" name="sudoku" value="2" required/></td>
+            <td id="allaparemale5"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="allavasakule6"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="alla6"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="allaparemale6"><input type="text" size="1" name="sudoku" value="6" required/></td>
+        </tr>
+
+        <tr>
+            <td id="ylessevasakule7"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="ylesse4"><input type="text" size="1" name="sudoku" value="6" required/></td>
+            <td id="ylesseparemale7"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="ylessevasakule8"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="ylesse5"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="ylesseparemale8"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="ylessevasakule9"><input type="text" size="1" name="sudoku" value="2" required/></td>
+            <td id="ylesse6"><input type="text" size="1" name="sudoku" value="8" required/></td>
+            <td id="ylesseparemale9"><input type="text" size="1" name="sudoku" required/></td>
+        </tr>
+
+        <tr>
+            <td id="vasakule7"><input type="text" size="1" name="sudoku" required/></td>
+            <td><input type="text" size="1" name="sudoku" required/></td>
+            <td id="paremale7"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="vasakule8"><input type="text" size="1" name="sudoku" value="4" required/></td>
+            <td><input type="text" size="1" name="sudoku" value="1" required/></td>
+            <td id="paremale8"><input type="text" size="1" name="sudoku" value="9" required/></td>
+
+            <td id="vasakule9"><input type="text" size="1" name="sudoku" required/></td>
+            <td><input type="text" size="1" name="sudoku" required/></td>
+            <td id="paremale9"><input type="text" size="1" name="sudoku" value="5" required/></td>
+        </tr>
+
+        <tr>
+            <td id="allavasakule7"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="alla7"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="allaparemale7"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="allavasakule8"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="alla8"><input type="text" size="1" name="sudoku" value="8" required/></td>
+            <td id="allaparemale8"><input type="text" size="1" name="sudoku" required/></td>
+
+            <td id="allavasakule9"><input type="text" size="1" name="sudoku" required/></td>
+            <td id="alla9"><input type="text" size="1" name="sudoku" value="7" required/></td>
+            <td id="allaparemale9"><input type="text" size="1" name="sudoku" value="9" required/></td>
+        </tr>
+    </table>
+
+    <input type="submit" th:value="#{submit}">
+</form>
+
 <script src="/static/js/offline.js"></script>
 <script>
     //This caches the page for offline use
