@@ -2,6 +2,26 @@
 
 <html th:lang="#{language_code}" xmlns:th="http://www.thymeleaf.org">
 <head>
+
+    <script src="/static/js/jquery-1.7.1.js"></script>
+    <script src="/static/js/update.js"></script>
+    <script th:inline="javascript">
+    //This gets the csrf tokens and language code from the website
+        /*<![CDATA[*/
+        var _csrf_token = /*[[${_csrf.token}]]*/ '';
+        var _csrf_param_name = /*[[${_csrf.parameterName}]]*/ '';
+        var updateMessage = [[#{update}]];
+        /*]]>*/
+    </script>
+    <script th:inline="javascript">
+
+	//This executes a long-poll that continuously checks for updates on the server
+		$( function() {
+		    update.updateId(updateMessage);
+		    //alert(update.askUpdate());
+		});
+    </script>
+
     <title th:text="#{tron_upload}"></title>
     <th:block th:include="fragments/head"/>
 </head>
@@ -21,10 +41,9 @@
     <input type="submit" th:value="#{submit}">
 </form>
 
-
-<script src="/static/js/jquery-1.7.1.js"></script>
 <script src="/static/js/offline.js"></script>
 <script>
+    //This caches the page for offline use
 		$( function() {
 			if ( !offliner.isOffline ) {
 				offliner.cacheCurrentPage();

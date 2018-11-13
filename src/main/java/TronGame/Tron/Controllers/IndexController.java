@@ -19,12 +19,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Controller
 @EnableScheduling
     public class IndexController {
     private double manifestID = Math.random();
+
 
     //This checks for an update every 5 minutes for the cache
     @Scheduled(fixedDelay=300000)
@@ -78,6 +85,30 @@ import javax.servlet.http.HttpServletRequest;
 
     @RequestMapping("/sitemap")
     public String sitemap(){ return "sitemap"; }
+
+    @RequestMapping("/updates")
+    public String updateCheck(Model model) {
+        System.out.println(model.asMap());
+        System.out.println(model.asMap().get(0));
+
+        model.asMap().get(0);
+        while(true) {
+            boolean thereIsUpdates = false;
+
+
+            if( thereIsUpdates ) {
+                break;
+            }
+        }
+        return "someResponse";
+    }
+
+
+
+//    @RequestMapping("/updateId")
+//    public String updateId(Model model) {
+//        return Double.toString(updateID);
+//    }
 
     @RequestMapping("/userFallback")
     public String user_fallback(){ return "userFallback"; }
