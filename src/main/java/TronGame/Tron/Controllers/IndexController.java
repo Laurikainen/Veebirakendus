@@ -61,7 +61,6 @@ import javax.servlet.http.HttpServletRequest;
 
     @RequestMapping("/forum")
     public String forum(){
-        new SendEmail().sendEmail("");
         return "forum";
     }
 
