@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html th:lang="#{language_code}" xmlns:th="http://www.thymeleaf.org">
 <head>
-
     <script src="/static/js/jquery-1.7.1.js"></script>
     <script src="/static/js/update.js"></script>
     <script th:inline="javascript">
@@ -30,7 +29,8 @@
 <header th:include="fragments/navigation :: navigation"/>
 
 <h1 th:text="#{homepage}"></h1>
-
+<p th:text="#{sudoku_description}"></p>
+<p></p><img src="sudoku.png"/></p>
 <a th:href="@{/about_us}" th:text="#{main_page_map}" th:alt="#{main_page_map}"></input></a>
 
 <!--<input type="hidden"-->
