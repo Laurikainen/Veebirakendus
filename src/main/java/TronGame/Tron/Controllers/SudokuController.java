@@ -24,7 +24,7 @@ public class SudokuController {
                 model.addAttribute("incorrect", true);
                 return "play_game";
             }
-
+            i+=1;
         }
         model.addAttribute("correct", true);
         return "play_game";
