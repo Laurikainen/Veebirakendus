@@ -47,7 +47,7 @@ if (!window.jQuery) {
 
 <form th:action="@{/upload}" th:object="${pictureForm}" enctype="multipart/form-data" method="post">
     <p><label for="data" th:text="#{picture}"></label></p>
-    <input type="file" id="data" name="data" accept="image/*" required/>
+    <input type="file" id="data" name="data" accept="image/jpeg,image/png" required/>
     <input type="submit" th:value="#{submit}">
 </form>
 

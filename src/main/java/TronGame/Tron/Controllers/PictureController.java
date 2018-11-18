@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.naming.SizeLimitExceededException;
 import java.security.Principal;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 
 @Controller
@@ -42,7 +43,7 @@ public class PictureController {
             if (upload.isPresent()) {
                 model.addAttribute("picture_exists", true);
             }
-            else {
+            else if (Objects.equals(data.getContentType(), "image/jpeg") || Objects.equals(data.getContentType(), "image/png")) {
                 UploadForm uploadForm = new UploadForm();
                 uploadForm.setUsername(auth.getName());
                 uploadForm.setData(data.getBytes());
