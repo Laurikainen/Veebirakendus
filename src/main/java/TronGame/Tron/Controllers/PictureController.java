@@ -54,6 +54,9 @@ public class PictureController {
                 model.addAttribute("picture_uploaded", true);
                 new SendEmail().sendEmail(email);
             }
+            else {
+            model.addAttribute("picture_not_uploaded", true);
+            }
         }
         catch (Exception e) {
             model.addAttribute("picture_not_uploaded", true);
