@@ -36,8 +36,7 @@ if (!window.jQuery) {
 <header th:include="fragments/navigation :: navigation"/>
 
 <h1 th:text="#{forum}"></h1>
-<button><a th:href="@{/new_thread}" th:text="#{thread}"></a></button>
-<h3 th:each="post : ${form}"><a th:href="@{/post/}+${post.id}" th:text="${post.title}+' '+${post.user}"></a></h3>
+
 
 <script src="/static/js/offline.js"></script>
 <script>
@@ -47,6 +46,7 @@ if (!window.jQuery) {
 				offliner.cacheCurrentPage();
 				offliner.addCachingIframe();
 			}
+
 		});
 </script>
 </body>

@@ -41,7 +41,11 @@ public class UserController {
         model.addAttribute("type", pieces[4]);
 
         Optional<UploadForm> uploadForm = pictureRepository.findById((String) data.get("id"));
+
+        System.out.println(uploadForm);
+        System.out.println(uploadForm.isPresent());
         if (uploadForm.isPresent()) {
+            //model.addAttribute("uploadForm", uploadForm.get()); //Pole vaja
             byte[] array = uploadForm.get().getData();
             String base64 = "data:" + uploadForm.get().getType() + ";base64, " + Base64Utils.encodeToString(array);
             model.addAttribute("image", base64);
