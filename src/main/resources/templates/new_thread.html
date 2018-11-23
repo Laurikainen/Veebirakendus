@@ -29,15 +29,23 @@ if (!window.jQuery) {
 		});
     </script>
 
-    <title th:text="#{tron_forum}"></title>
+    <title th:text="#{tron_thread}"></title>
     <th:block th:include="fragments/head"/>
 </head>
 <body>
 <header th:include="fragments/navigation :: navigation"/>
 
-<h1 th:text="#{forum}"></h1>
-<button><a th:href="@{/new_thread}" th:text="#{thread}"></a></button>
-<h3 th:each="post : ${form}"><a th:href="@{/post/}+${post.id}" th:text="${post.title}+' '+${post.user}"></a></h3>
+<h1 th:text="#{thread}"></h1>
+<p th:if="${thread_created}" th:text="#{thread_created}"></p>
+<form th:action="@{/new_thread}" th:object="${forumInputForm}" method="post">
+    <p><label for="title" th:text="#{title}"></label></p>
+    <input type="text" id="title" name="title" required/>
+    <p><label for="context" th:text="#{context}"></label></p>
+    <textarea rows="8" cols="80" id="context" name="context" required></textarea>
+    <p><input type="reset" th:value="#{reset}">
+    <input type="submit" th:value="#{submit}"></p>
+</form>
+
 
 <script src="/static/js/offline.js"></script>
 <script>
@@ -47,6 +55,7 @@ if (!window.jQuery) {
 				offliner.cacheCurrentPage();
 				offliner.addCachingIframe();
 			}
+
 		});
 </script>
 </body>

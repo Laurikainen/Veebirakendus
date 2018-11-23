@@ -1,6 +1,5 @@
 package TronGame.Tron.Controllers;
 
-import TronGame.Tron.Entities.SendEmail;
 import TronGame.Tron.Entities.StatisticsForm;
 import TronGame.Tron.Repositories.RegistrationRepository;
 import TronGame.Tron.Repositories.StatisticsRepository;
@@ -19,19 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @Controller
 @EnableScheduling
-    public class IndexController {
+public class IndexController {
     private double manifestID = Math.random();
-
 
     //This checks for an update every 5 minutes for the cache
     @Scheduled(fixedDelay=300000)
@@ -66,14 +58,6 @@ import java.io.IOException;
     @RequestMapping("/login")
     public String login(){ return "login"; }
 
-    @RequestMapping("/forum")
-    public String forum(){
-        return "forum";
-    }
-
-    @RequestMapping("/new_post")
-    public String new_post(){ return "new_post"; }
-
     @RequestMapping("/privacy_policy")
     public String privacy_policy(){ return "privacy_policy"; }
 
@@ -99,13 +83,6 @@ import java.io.IOException;
         }
         return "someResponse";
     }
-
-
-
-//    @RequestMapping("/updateId")
-//    public String updateId(Model model) {
-//        return Double.toString(updateID);
-//    }
 
     @RequestMapping("/userFallback")
     public String user_fallback(){ return "userFallback"; }

@@ -37,6 +37,16 @@ if (!window.jQuery) {
 
 <h1 th:text="#{new_post}"></h1>
 
+<p th:if="${post_added}" th:text="#{post_added}"></p>
+<p th:if="${post_not_added}" th:text="#{post_not_added}"></p>
+
+<form th:action="@{/new_post/}+${id}" th:object="${postInputForm}" method="post" action="/forum">
+    <textarea rows="8" cols="80" id="reply" name="reply" required></textarea>
+    <p><input type="reset" th:value="#{reset}">
+    <input type="submit" th:value="#{submit}"></p>
+</form>
+
+
 <script src="/static/js/offline.js"></script>
 <script>
     //This caches the page for offline use
