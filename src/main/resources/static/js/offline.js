@@ -82,6 +82,8 @@ var offliner = (function() {
 			}
 			else {
 
+                if(pathname == "/user"){
+                window.location.href = "/upload"}
 				title = 'Error (offline)';
                 //var regex = new RegExp('<body\B</body>');
                 	//document.head = '<title th:text="#{tron_fall}"></title>\n    <th:block th:include="fragments/head"/>';
@@ -93,9 +95,11 @@ var offliner = (function() {
 				//alert(expr.test(string));
 				//alert(localStorage.getItem(localStorage.key(localStorage.length-2)));
 
-				//content = //This massive stringified json file is basically a blank page that shows us a navigation bar and error message
+				//content = //This massive stringified file is basically a blank page that shows us a navigation bar and error message
                 if(expr.test(string)){
 				    content = "\n    <script src=\"/static/js/jquery-1.7.1.js\"></script>\n    <script src=\"/static/js/offline.js\"></script>\n    <script>\n\t\t$( function() {\n\t\t\tif ( !offliner.isOffline ) {\n\t\t\t\toffliner.cacheCurrentPage();\n\t\t\t\toffliner.addCachingIframe();\n\t\t\t}\n\n\t\t});\n    </script>\n\n\n<header>\n    <ul>\n        <li><a href=\"/\">Mängu Info</a></li>\n        <li><a href=\"/play_game\">Mängi mängu</a></li>\n        <li><a href=\"/forum\">Foorum</a></li>\n        <li><a href=\"/user\">Kasutaja Info</a></li>\n        <li><a href=\"/statistics\">Statistika</a></li>\n        <li style=\"float:right\"><a href=\"/login\">Logi sisse</a></li>\n        <li style=\"float:right\"><a href=\"?lang=en\" rel=\"alternate\" hreflang=\"en\">Inglise keel</a></li>\n        <li style=\"float:right\"><a href=\"?lang=et\" rel=\"alternate\" hreflang=\"et\">Eesti keel</a></li>\n        <li style=\"float:right\"><a href=\"/sitemap\">Sisukaart</a></li>\n    </ul>\n</header>\n\n<h1>Viga!</h1>\n\n<a>Ilma veebiühenduseta on kasutatavad vaid viimati külastatud veebilehed.</a>\n\n";
+
+
                 }
                 else{
                     content = "\n    <script src=\"/static/js/jquery-1.7.1.js\"></script>\n    <script src=\"/static/js/offline.js\"></script>\n    <script>\n\t\t$( function() {\n\t\t\tif ( !offliner.isOffline ) {\n\t\t\t\toffliner.cacheCurrentPage();\n\t\t\t\toffliner.addCachingIframe();\n\t\t\t}\n\n\t\t});\n    </script>\n\n\n<header>\n    <ul>\n        <li><a href=\"/\">Game Info</a></li>\n        <li><a href=\"/play_game\">Play Game</a></li>\n        <li><a href=\"/forum\">Forum</a></li>\n        <li><a href=\"/user\">User Info</a></li>\n        <li><a href=\"/statistics\">Statistics</a></li>\n        <li style=\"float:right\"><a href=\"/login\">Login</a></li>\n        <li style=\"float:right\"><a href=\"?lang=en\" rel=\"alternate\" hreflang=\"en\">English</a></li>\n        <li style=\"float:right\"><a href=\"?lang=et\" rel=\"alternate\" hreflang=\"et\">Estonian</a></li>\n        <li style=\"float:right\"><a href=\"/sitemap\">Sitemap</a></li>\n    </ul>\n</header>\n\n<h1>Error!</h1>\n\n<a>Without internet access you can only see the websites you've recently visited.</a>\n\n\n\n";
