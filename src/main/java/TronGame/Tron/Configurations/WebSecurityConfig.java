@@ -78,8 +78,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers()
                 .frameOptions()
                 .sameOrigin();
-
-        http.headers().disable();
     }
 
     /*This method for creating filter for OAuth authentication.*/
