@@ -31,17 +31,16 @@ public class UserController {
             registrationRepository.register((String) data.get("id"), (String) data.get("name"), (String) data.get("locale"));
         }
 
-        String str = registrationRepository.joinByPrincipal((String) data.get("id"));
-        String[] pieces = str.split(",");
-
-        model.addAttribute("id", pieces[0]);
-        model.addAttribute("name",pieces[1]);
-        model.addAttribute("locale", pieces[2]);
-        model.addAttribute("picture_name", pieces[3]);
-        model.addAttribute("type", pieces[4]);
-
         Optional<UploadForm> uploadForm = pictureRepository.findById((String) data.get("id"));
         if (uploadForm.isPresent()) {
+            String str = registrationRepository.joinByPrincipal((String) data.get("id"));
+            String[] pieces = str.split(",");
+
+            model.addAttribute("id", pieces[0]);
+            model.addAttribute("name",pieces[1]);
+            model.addAttribute("locale", pieces[2]);
+            model.addAttribute("picture_name", pieces[3]);
+            model.addAttribute("type", pieces[4]);
             byte[] array = uploadForm.get().getData();
             String base64 = "data:" + uploadForm.get().getType() + ";base64, " + Base64Utils.encodeToString(array);
             model.addAttribute("image", base64);
