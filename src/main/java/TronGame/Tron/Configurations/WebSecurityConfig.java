@@ -1,6 +1,5 @@
 package TronGame.Tron.Configurations;
 
-import TronGame.Tron.Entities.SendEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
