@@ -131,3 +131,18 @@ var offliner = (function() {
 		}
 	};
 })();
+
+function cachePage() {
+    if ( !offliner.isOffline ) {
+                offliner.cacheCurrentPage();
+                offliner.addCachingIframe();
+            }
+
+}
+function renderPage(){
+		offliner.isOffline = true;
+		// We only want to render the page if we're not in the hidden iframe
+		if ( location.hash != '#iframed' ) {
+			offliner.renderCurrentPage();
+		}
+}
