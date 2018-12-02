@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html th:lang="#{language_code}" xmlns:th="http://www.thymeleaf.org"  manifest="/offline.appcache">
 <head>
-
     <title th:text="#{tron_fall}"></title>
-    <th:block th:include="fragments/head"/>
+    <link rel="stylesheet" type="text/css" href="https://demozone-e2d6.kxcdn.com/static/css/stiil.css"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta name="description" content="Web applications course project - Tron Online">
+    <meta name="keywords" content="Forum, Statistics, Tron">
+    <meta name="author" content="Tron-Online">
 </head>
 <body onload="renderPage(); update.updateId(updateMessage);">
 <header th:include="fragments/navigation :: navigation"/>
