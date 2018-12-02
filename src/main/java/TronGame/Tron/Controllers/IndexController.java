@@ -60,12 +60,12 @@ public class IndexController {
 
         statisticsRepository.save(statisticsForm);
 
-        Optional<UploadForm> uploadForm = pictureRepository.findById("107742649521854336450");
+        /*Optional<UploadForm> uploadForm = pictureRepository.findById("107742649521854336450");
         if (uploadForm.isPresent()) {
             byte[] array = uploadForm.get().getData();
             String base64 = "data:" + uploadForm.get().getType() + ";base64, " + Base64Utils.encodeToString(array);
             model.addAttribute("sudoku", base64);
-        }
+        }*/
         return "main_page";
     }
 
