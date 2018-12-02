@@ -12,18 +12,23 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 
-public class NavigationLanguageTest {
+public class SiteTest {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
+
+    private String geckoDriverPath = "D:/Users/kaarel/Downloads/geckodriver-v0.23.0-win64/geckodriver.exe";
+    private String website = "https://tron-online.herokuapp.com";
+    private String pngPath = "D:\\DungeonRaider\\spCjPDr.png";
+    private String imageName = "spCjPDr.png";
 
 
 
     @Before
     public void setUp() throws Exception {
         //if you didn't update the Path system variable to add the full directory path to the executable as above mentioned then doing this directly through code
-        System.setProperty("webdriver.gecko.driver", "D:/Users/kaarel/Downloads/geckodriver-v0.23.0-win64/geckodriver.exe");
+        System.setProperty("webdriver.gecko.driver", geckoDriverPath);
 
 //Now you can Initialize marionette driver to launch firefox
         FirefoxOptions capabilities = new FirefoxOptions();
@@ -38,7 +43,7 @@ public class NavigationLanguageTest {
 
     @Test
     public void testBasicNavigationAndLanguage() throws Exception {
-        driver.get("https://tron-online.herokuapp.com/");
+        driver.get(website);
         driver.findElement(By.linkText("Main page")).click();
         try {
             assertEquals("Game info", driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Sitemap'])[1]/following::h1[1]")).getText());
@@ -267,7 +272,7 @@ public class NavigationLanguageTest {
 
     @Test
     public void testSitemapFunctionality() throws Exception {
-        driver.get("https://tron-online.herokuapp.com/sitemap?lang=en");
+        driver.get(website + "/sitemap?lang=en");
         driver.findElement(By.linkText("Sitemap")).click();
         try {
             assertEquals("Functions", driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Sitemap'])[2]/following::th[1]")).getText());
@@ -342,6 +347,8 @@ public class NavigationLanguageTest {
             } catch (NoAlertPresentException e) {
                 e.printStackTrace();
             }
+        }   catch (NoAlertPresentException e) {
+            e.printStackTrace();
         }
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Googles privacy policy'])[1]/following::a[1]")).click();
         try {
@@ -527,7 +534,7 @@ public class NavigationLanguageTest {
 
     @Test
     public void testUploadingAndUser() throws Exception {
-        driver.get("https://tron-online.herokuapp.com/");
+        driver.get(website);
         driver.findElement(By.linkText("User Info")).click();
         try {
             assertEquals("Upload a profile picture", driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Sitemap'])[1]/following::h1[1]")).getText());
@@ -544,7 +551,7 @@ public class NavigationLanguageTest {
             }
         }
         driver.findElement(By.id("data")).clear();
-        driver.findElement(By.id("data")).sendKeys("D:\\DungeonRaider\\spCjPDr.png");
+        driver.findElement(By.id("data")).sendKeys(pngPath);
         driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Format - jpeg, png'])[1]/following::input[2]")).click();
         try {
             driver.findElement(By.linkText("User Info")).click();
@@ -561,7 +568,7 @@ public class NavigationLanguageTest {
         }
 
         try {
-            assertEquals("spCjPDr.png", driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='User Info'])[2]/following::p[10]")).getText());
+            assertEquals(imageName, driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='User Info'])[2]/following::p[10]")).getText());
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }        catch (UnhandledAlertException f) {
