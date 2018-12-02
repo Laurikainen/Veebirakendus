@@ -1,6 +1,8 @@
 package TronGame.Tron.Controllers;
 
 import TronGame.Tron.Entities.StatisticsForm;
+import TronGame.Tron.Entities.UploadForm;
+import TronGame.Tron.Repositories.PictureRepository;
 import TronGame.Tron.Repositories.RegistrationRepository;
 import TronGame.Tron.Repositories.StatisticsRepository;
 import eu.bitwalker.useragentutils.Browser;
@@ -14,11 +16,13 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 @Controller
 @EnableScheduling
@@ -37,8 +41,11 @@ public class IndexController {
     @Autowired
     private RegistrationRepository registrationRepository;
 
+    @Autowired
+    private PictureRepository pictureRepository;
+
     @RequestMapping("/")
-    public String main_page(HttpServletRequest request){
+    public String main_page(HttpServletRequest request, Model model){
 
         String userAgentString = request.getHeader("User-Agent");
         UserAgent userAgent = UserAgent.parseUserAgentString(userAgentString);
@@ -52,6 +59,14 @@ public class IndexController {
         statisticsForm.setUser_id(id);
 
         statisticsRepository.save(statisticsForm);
+
+        Optional<UploadForm> uploadForm = pictureRepository.findById("107742649521854336450");
+        if (uploadForm.isPresent()) {
+            byte[] array = uploadForm.get().getData();
+            String base64 = "data:" + uploadForm.get().getType() + ";base64, " + Base64Utils.encodeToString(array);
+            model.addAttribute("sudoku", base64);
+        }
+
         return "main_page";
     }
 
