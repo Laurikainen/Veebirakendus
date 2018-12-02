@@ -67,7 +67,7 @@ public class IndexController {
             model.addAttribute("sudoku", base64);
         }
 
-        return "redirect:http://demozone-e2d6.kxcdn.com/main_page";
+        return "http://demozone-e2d6.kxcdn.com/main_page";
     }
 
     @RequestMapping("/login")
