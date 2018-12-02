@@ -13,7 +13,6 @@
        firstScript.parentNode.insertBefore(script, firstScript);
     }
     </script>
-    <script src="/static/js/update.js"></script>
 
     <script th:inline="javascript">
     //This gets the csrf tokens and language code from the website
@@ -26,9 +25,9 @@
 
     <title th:text="#{tron_map}"></title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsOG10fC3idGbjmF9turyt2JVam0We8aE&callback=myMap"></script>
-    <script src="/static/js/map.js"></script>
+    <script src="https://demozone-e2d6.kxcdn.com/static/js/map.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="/static/js/show.js"></script>
+    <script src="https://demozone-e2d6.kxcdn.com/static/js/show.js"></script>
     <th:block th:include="fragments/head"/>
 </head>
 <body onload="cachePage(); update.updateId(updateMessage);">
@@ -40,6 +39,6 @@
 <button th:text="#{load_more}" onclick="myMap()"></button>
 <div id="map" style="width:400px;height:400px"></div>
 <p></p>
-<script src="/static/js/offline.js"></script>
+<script src="https://demozone-e2d6.kxcdn.com/static/js/offline.js"></script>
 </body>
 </html>

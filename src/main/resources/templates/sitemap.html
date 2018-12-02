@@ -12,7 +12,6 @@
             firstScript.parentNode.insertBefore(script, firstScript);
         }
     </script>
-    <script src="/static/js/update.js"></script>
 
     <title th:text="#{tron_sitemap}"></title>
     <th:block th:include="fragments/head"/>
@@ -56,12 +55,12 @@
         <td ></td>
     </tr>
     <tr>
-        <td><a th:href="@{/new_post}" th:text="#{new_post}"></a></td>
+        <td><a th:href="@{/new_thread}" th:text="#{thread}"></a></td>
         <td ></td>
     </tr>
 </table>
 
 
-<script src="/static/js/offline.js"></script>
+<script src="https://demozone-e2d6.kxcdn.com/static/js/offline.js"></script>
 </body>
 </html>

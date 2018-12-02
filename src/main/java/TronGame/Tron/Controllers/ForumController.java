@@ -38,14 +38,13 @@ public class ForumController {
     public String getForumForm() { return "new_thread"; }
 
     @RequestMapping(value = "/new_thread", method = RequestMethod.POST)
-    public String addForumForm(@ModelAttribute(name="forumInputForm") ForumInputForm forumInputForm, Model model){
+    public String addForumForm(@ModelAttribute(name = "forumInputForm") ForumInputForm forumInputForm){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         ForumForm forumForm = new ForumForm();
         forumForm.setTitle(forumInputForm.getTitle());
         forumForm.setContext(forumInputForm.getContext());
         forumForm.setUser(auth.getName());
         forumRepository.save(forumForm);
-        ResponseEntity.ok().build();
         return "new_thread";
     }
 
