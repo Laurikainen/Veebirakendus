@@ -140,7 +140,7 @@ public class IndexController {
                     //"/upload\n" +
                     "\n" +
                     "FALLBACK:\n" +
-                    "/ userFallback\n" +
+                    "/userFallback\n" +
                     "\n" +
                     "NETWORK:\n" +
                     "*";
