@@ -23,23 +23,17 @@
         /*]]>*/
     </script>
 
-    <title th:text="#{tron_post}"></title>
+    <title th:text="${tron_display}"></title>
     <th:block th:include="fragments/head"/>
 </head>
 <body onload="cachePage(); update.updateId(updateMessage);">
 <header th:include="fragments/navigation :: navigation"/>
 
-<h1 th:text="#{new_post}"></h1>
-
-<p th:if="${post_added}" th:text="#{post_added}"></p>
-<p th:if="${post_not_added}" th:text="#{post_not_added}"></p>
-
-<form th:action="@{/new_post/}+${id}" th:object="${postInputForm}" method="post" action="/forum">
-    <textarea rows="8" cols="80" id="reply" name="reply" required></textarea>
-    <p><input type="reset" th:value="#{reset}">
-    <input type="submit" th:value="#{submit}"></p>
-</form>
-
+<h1 th:text="${form.title}"></h1>
+<h4 th:text="${form.user}"></h4>
+<p th:text="${form.context}"></p>
+<p th:each="reply : ${replies}" th:text="${reply.reply }+' '+${reply.user}"></p>
+<button><a th:href="@{/new_post/}+${form.id}" th:text="#{new_post}"></a></button>
 
 <script src="/static/js/offline.js"></script>
 </body>
