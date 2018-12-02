@@ -66,7 +66,6 @@ public class IndexController {
             String base64 = "data:" + uploadForm.get().getType() + ";base64, " + Base64Utils.encodeToString(array);
             model.addAttribute("sudoku", base64);
         }
-
         return "main_page";
     }
 
